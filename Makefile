@@ -1,7 +1,7 @@
-# Makefile for compiling LaTeX solutions document
+# Makefile for compiling LaTeX tutorials document
 
 # Variables
-DOCUMENT = Tutorials 
+DOCUMENT = Tutorials
 TEX_FILE = $(DOCUMENT).tex
 PDF_FILE = $(DOCUMENT).pdf
 
