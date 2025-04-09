@@ -12,7 +12,7 @@ all: $(PDF_FILE)
 $(PDF_FILE): $(TEX_FILE)
 	pdflatex $(TEX_FILE)
 	pdflatex $(TEX_FILE)  # Run twice for references
-
+	pdflatex $(TEX_FILE)  # jednak standard to trzy razy
 # Clean up temporary files
 clean:
 	rm -f *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.fls *.fdb_latexmk *.synctex.gz

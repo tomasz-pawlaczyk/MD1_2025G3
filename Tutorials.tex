@@ -1,336 +1,915 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass{mwart}
+
+            % Papier
+\usepackage{polski}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{enumitem}
+\usepackage[a4paper, total={16cm, 24cm}]{geometry}
+
+            % Matematyka
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+           % Wygląd
+%\usepackage{url}
+\usepackage{hyperref}
+\usepackage{graphics}
 \usepackage{fancyhdr}
 \usepackage{geometry}
+\usepackage{enumitem}
 
-\geometry{a4paper, margin=1in}
 
+
+            % Ustawienia ramek
+\usepackage[nobreak=false]{mdframed}
+\mdfsetup{%
+% frametitlerule=true,
+% subtitlebelowline=true,
+subtitleaboveline=true,
+subtitleaboveskip=0,
+subtitlebelowskip=0,
+linewidth=1pt}
+
+
+% Skroty
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+\newtheorem{zad}{Zadanie}[section]
+
+
+% Początek strony tytułowej
+
+
+\author{\textbf{Grupa 3} \\ \textsf{Informatyka i Systemy Informacyjne | MiNI PW}}
+\title{%
+%\includegraphics[width=1\textwidth]{logo_uczelni.png}
+\textbf{Matematyka Dyskretna I}}
+
+
+%\setcounter{secnumdepth}{1}
 \pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{Discrete Mathematics}
-\fancyhead[R]{Solutions}
-\fancyfoot[C]{\thepage}
+\setlength{\headsep}{1.2cm}
+\fancyhead{}
+\lhead{Grupa 3\\\textsf{Wydział MiNI PW}}
+\chead{\Large \textbf{Rozwiązania zadań}}
+\rhead{\textbf{Matematyka Dyskretna 1}\\Informatyka}
 
-\title{Discrete Mathematics - Solutions}
-\author{Student Name}
-\date{\today}
+\fancyfoot{}
+\rfoot{\texttt{\thepage}}
+
+\fancypagestyle{specialfooter}{%
+    \fancyhf{}
+    \renewcommand\headrulewidth{0pt}
+    \fancyfoot[C]{\Large{Lato 2025}}
+}
+
 
 \begin{document}
+\maketitle{}
+\begin{center}
+    Studenckie rozwiązania zadań z ćwiczeń z Matematyki Dyskretnej I. \\
+    Ćwiczenia z \emph{MD I} w gr. 3 prowadzi dr inż. Tomasz Brengos \\
+    i też oto pod jego opieką powstaje ten plik. \\
+    Ostatnia aktualizacja: \today{} \\
+    \tableofcontents
+    \thispagestyle{specialfooter}
 
-\maketitle
+\end{center}
 
-\section{Set 1: Fundamentals}
+% Koniec strony tytułowej
 
-\subsection*{Exercise 1.1}
-\textit{(Regions formed by n lines on a plane)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.2}
-\textit{(Fibonacci sequence properties)}
 
-\begin{enumerate}[label=(\roman*)]
-\item \textit{Sum of first n+1 Fibonacci numbers}
-\vspace{1cm}
-% Space for solution
 
-\item \textit{Divisibility property}
-\vspace{1cm}
-% Space for solution
 
-\item \textit{Upper bound}
-\vspace{1cm}
-% Space for solution
-\end{enumerate}
 
-\subsection*{Exercise 1.3}
-\textit{(Tournament graph property - two-step reachability)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.4}
-\textit{(Hamiltonian path in tournaments)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.5}
-\textit{(Virus spread on chessboard)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.6}
-\textit{(Equal number of acquaintances)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.7}
-\textit{(Ambassadors and flags problem)}
+% Poczatek dokumentu
+\newpage
+\section{Zestaw}              % Zestaw 1
+\begin{zad}[]
+    Na płaszczyźnie poprowadzono $n$ prostych, z których żadne dwie nie
+    są równoległe i żadne trzy nie przechodzą przez ten sam punkt.
+    Wyznacz liczbę:
+    \begin{enumerate}
+        \item obszarów, na które te proste dzielą płaszczyznę;
+        \item obszarów ograniczonych, na które te proste dzielą płaszczyznę.
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.8}
-\textit{(Subsequence with sum divisible by n)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    Ciąg Fibonacciego $\{F_n\}_{n \in \mathbb{N}}$ zadany jest przez
+    $F_0=0$, $F_1=1$ i $F_{n+2}=F_{n+1}+F_n$. Udowodnij, że: \\
+    \begin{enumerate}
+        \item $F_0 + ... + F_n = F_{n+2} - 1$;
+        \item $5|F_{5n}$,
+        \item $F_n < 2_n$.
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 1.9}
-\textit{(Subset containment in large families)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.10}
-\textit{(Element in at least half of large subsets)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[]
+    Turniej $n$-wierzchołkowy to dowolny graf skierowany $G = (V, E)$, gdzie $|V| = n$
+    i w którym $(u, v) \in E$ lub $(v, u) \in E$ dla dowolnych $u, v \in V$.
+    Pokaż, że w dowolnym niepustym turnieju istnieje wierzchołek z którego można “przejść”
+    po krawędziach zgodnie z ich skierowaniem do dowolnego innego wierzchołka w co
+    najwyżej dwóch krokach.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 1.11}
-\textit{(Covering chessboard with 2×2 and 3×3 tiles)}
+\begin{zad}[W]
+    Udowodnij, że każdy turniej ma ścieżkę Hamiltona.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 1.12}
-\textit{(Covering  chessboard with L-shaped tiles)}
 
-\vspace{1cm}
-% Space for solution
 
-\section{Set 2: Binomial Coefficients and Counting}
+\begin{zad}[W]
+    W każdym polu szachownicy rozmiaru $n x n $ znajduje się jedna osoba.
+    Część osób zarażona jest wirusem grypy. Wirus grypy rozprzestrzenia się w dyskretnych
+    odstępach czasowych w sposób następujący:
+    \begin{itemize}
+        \item osoby zarażone pozostają zarażone,
+        \item osoba ulega zarażeniu jeżeli co najmniej dwie sąsiadujące z nią osoby są już zarażone
+              (przez osobę sąsiednią rozumiemy osobę siedzącą z przodu, z tyłu, z lewej lub prawej
+              strony).
+              Wykaż, że jeżeli na początku zarażonych jest istotnie mniej niż n osób, to w każdej chwili
+              przynajmniej jedna osoba pozostaje niezarażona.
+    \end{itemize}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[]
+    Wykaż, że w grupie $n$ osób istnieją dwie, które mają taka samą liczbę znajomych.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
 
-\subsection*{Exercise 2.1}
-\textit{(Non-attacking rooks on  chessboard)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.2}
-\textit{(Non-attacking rooks on chessboard)}
+\begin{zad}[]
+    Przy okrągłym stole jest $n$ miejsc oznaczonych proporczykami różnych
+    państw. Ambasadorowie tych państw usiedli przy tym stole tak, że żaden z nich nie siadł
+    przy właściwym proporczyku. Wykaż, że można tak obrócić stołem, że co najmniej 2
+    ambasadorów znajdzie się przed proporczykiem swojego państwa.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.3}
-\textit{(Recurrence relations)}
 
-\begin{enumerate}[label=(\roman*)]
-\item \textit{Words without consecutive 1s}
-\vspace{1cm}
-% Space for solution
 
-\item \textit{Domino tilings of  rectangle}
-\vspace{1cm}
-% Space for solution
-\end{enumerate}
+\begin{zad}[W]
+    Pokaż, że w dowolnym ciągu n liczb całkowitych istnieje (niepusty)
+    podciąg kolejnych elementów taki, że suma wyrazów podciągu jest wielokrotnością n.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 2.4}
-\textit{(Solutions to an equation)}
 
-\begin{enumerate}[label=(\roman*)]
-\item \textit{Non-negative integer solutions}
-\vspace{1cm}
-% Space for solution
 
-\item \textit{Positive integer solutions}
-\vspace{1cm}
-% Space for solution
-\end{enumerate}
 
-\subsection*{Exercise 2.5}
-\textit{(Ways to cut out  squares from  chocolate)}
+\begin{zad}[]
+    Rozważ dowolną rodzinę podzbiorów zbioru $n$--elementowego zawierającą
+    więcej niż połowę wszystkich podzbiorów. Wykaż, że w tej rodzinie muszą być dwa zbiory
+    takie, że jeden zawiera się w drugim.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.6}
-\textit{(Summation rule for upper index)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[]
+    Dla $n$--elementowego zbioru $X$ rozważ pewną rodzinę jego podzbiorów
+    $\mathcal{F}$, gdzie $|F| > n/2$ dla każdego $F \in \mathcal{F}$. Wykaż, że istnieje
+    $x \in X$ należący do co najmniej połowy zbiorów z $\mathcal{F}$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 2.7}
-\textit{(Parallel summation rule)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.8}
-\textit{(Monotonic functions count)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    Dana jest kwadratowa szachownica $2n \times 2n$ z wyciętym jednym polem.
+    Wykaż, że dla wszystkich wartości $n \geq 1$ możemy pokryć tę szachownicę kostkami w
+    kształcie litery L (czyli kwadrat $2 \geq 2$ bez jednego pola).
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 2.9}
-\textit{(k-element subsets without adjacent numbers)}
+\begin{zad}[W]
+    Dana jest kwadratowa szachownica $n \times n$. Dla jakich wartosci $n\geq 1$
+    możemy pokryć tę szachownicę kostkami wielkości $2 \times 2$ oraz $3 \times 3$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.10}
-\textit{(Combinatorial identity proof)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 2.11}
-\textit{(Multiple combinatorial identities)}
+\begin{zad}[]
 
-\begin{enumerate}[label=(\alph*)]
-\item First identity
-\vspace{1cm}
-% Space for solution
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\item Second identity
-\vspace{1cm}
-% Space for solution
 
-\item Third identity
-\vspace{1cm}
-% Space for solution
-\end{enumerate}
 
-\section{Set 3: Stirling Numbers and Catalan Numbers}
 
-\subsection*{Exercise 3.1}
-\textit{(Unimodality of Stirling numbers of the second kind)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 3.2}
-\textit{(Bell number recurrence relation)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 3.3}
-\textit{(Stirling numbers identity)}
+\newpage
+\section{Zestaw}          % ZESTAW 2
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[R]
+    Na ile sposobów można ustawić $n$ wież na szachownicy
+    $n \times n$ tak, by żadne dwie nie znajdowały się w
+    polu wzajemnego rażenia.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 3.4}
-\textit{(Numerical procedure and Bell numbers)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 3.5}
-\textit{(Partitions without adjacent numbers)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[R]
+    Na ile sposobów można ustawić $k$ wież na szachownicy $n \times m$
+    tak, by żadne dwie nie znajdowały się w polu wzajemnego rażenia.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 3.6}
-\textit{(Binary trees and Catalan numbers)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 3.7}
-\textit{(Triangulations of a convex polygon)}
 
-\begin{enumerate}[label=(\roman*)]
-\item Total triangulations
-\vspace{1cm}
-% Space for solution
+\begin{zad}[R]
+    Znalźć definicje rekurencyjne następujących ciągów:
+    \begin{enumerate}
+        \item $a(n)$ -- liczba słów długości $n$ nad alfabetem
+              $\{0, 1\}$, które nie zawierają dwóch jedynek koło siebie.
+        \item  $b(n)$ -- liczba różnych pokryć prostokąta o wymiarze
+              $2 \times n$ dominami wymiaru $2 \times 1$.
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\item Triangulations with boundary edges
-\vspace{1cm}
-% Space for solution
-\end{enumerate}
 
-\subsection*{Exercise 3.8}
-\textit{(Labeled trees count)}
 
-\vspace{1cm}
-% Space for solution
 
-\section{Set 4: Stirling Numbers and Bell Numbers}
+\begin{zad}[W/R]
+    Ile rozwiązań ma równanie $x_1 + x_2+x_3+x_4 = 7$:
+    \begin{enumerate}
+        \item gdzie $x_i$ są liczbami naturalnymi?
+        \item gdzie $x_i$ są dodatnimi liczbami naturalnymi?
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 4.1}
-\textit{(Calculate Stirling)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 4.2}
-\textit{(Permutations by cycle structure)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    Rozważmy czekoladę złożoną z $m\times n$ kostek.
+    Na ile sposobów można wykroić prostokąt złożony z $k \times k$
+    sąsiadujących ze sobą kostek ze sobą kostek czekolady?
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 4.3}
-\textit{(Combinatorial identity for Stirling numbers)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 4.4}
-\textit{(Multinomial coefficient value)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    (Reguła sumowania po górnym indeksie). Udowodnij, że dla
+    $n, k \in \mathbb{N}$ zachodzi
+    \[\sum_{j=0}^n\binom{j}{k} = \binom{n+1}{k+1}\]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 4.5}
-\textit{(Harmonic number sum identity)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 4.6}
-\textit{(Falling and rising factorial identities)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    (Reguła sumowania równoległego). Udowodnij, że dla $n, k \in \mathbb{N}$
+    zachodzi \[     \]
+\end{zad}\
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\section{Set 5: Inclusion-Exclusion Principle and Counting}
 
-\subsection*{Exercise 5.1}
-\textit{(Prove inclusion-exclusion principle by induction)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[W]
+    Ile jest funkcji $f:\{1, ..., n\} \to \{1, ..., n\}$ monotonicznych takich,
+    że $f(i) \leq f(j) $ dla $i < j$?
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 5.2}
-\textit{(Count of surjections)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 5.3}
-\textit{(Sequences with each number appearing twice without adjacency)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[R]
+    Ile jest $k$--elementowych podzbiorów zbioru $n$--elementowego, które nie
+    zawierają dwóch sąsiednich liczb?
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 5.4}
-\textit{(Derangement recurrence relation)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}[]
+    Posługując się interpretacją kombinatoryczną udowodnij, że:
+    \[ \sum_{i=0}^{k} \binom{n}{i} \binom{n-i}{k-i} = 2^k \binom{n}{k} \]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 
-\subsection*{Exercise 5.5}
-\textit{(Combinatorial representations)}
 
-\vspace{1cm}
-% Space for solution
 
-\subsection*{Exercise 5.6}
-\textit{(Partition procedures)}
 
-\vspace{1cm}
-% Space for solution
+\begin{zad}
+    Udowodnij poniższe tożsamości na dwa sposoby: posługując się interpretacją
+    kombinatoryczną albo rozwinięciem dwumianu $(1 + x)^n$:
+    \begin{enumerate}
+        \item \[\sum_{k=0}^{n}k\binom{n}{k} = n2^{n-1}\]
+        \item \[\sum_{k=0}^{n}k^2\binom{n}{k}= (n+n^2)2^{n-2}\]
+        \item \[\sum_{i=0}^{k}\binom{m}{i}\binom{n}{k-i} = \binom{m+n}{k} \]
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+
+
+
+
+\newpage
+\section{Zestaw}          % ZESTAW 3
+
+\begin{zad}
+    Wykaż, że dla dowolnego $n \geq 1$ istnieje $k \geq 1$ takie, że:
+    \[S(n, 0) < S(n, 1) < ... < S(n, k - 1 ) \leq S(n, k) > S(n, k+1) > ... > S(n, n)\]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Wykaż, że:
+    \[B(n) = \sum_{i=0}^{n-1} \binom{n-1}{i}B(i)\]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Wykaż, że dla $n, k \in \mathbb{N}$ zachodzi:
+    \[S(n,k+1)=\frac{1}{(k+1)!} \sum_{0<i_0<...<i_{k-1}<n} \binom{n}{i_{k-1}}\binom{i_{k-1}}{i_{k_2}}...\binom{i_1}{i_0}     \]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+
+\begin{zad}
+    Rozważ  następującą procedurę generującą pewne liczby naturalne
+    $\{a_{i,j}\}_{1 \geq i \geq j}$:
+    \begin{enumerate}
+        \item $a_{0,0} = 1$,
+        \item $a_{n+1, 0} = a_{n,n}$, dla $n \geq 0$,
+        \item $a_{n+1, k+1} = a_{n, k} + a_{n+1, k}$, dla $n \geq k \geq 0$.
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Wykaż, że liczba podziałów zbioru $(n - 1)$  elementowego jest równa
+    liczbie podziałów zbioru $\{1, ..., n\}$ niezawierających sąsiednich liczb w jednym bloku.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Udowodnij, że liczba ukorzenionych drzew binarnych na $n$ wierzchołkach to $n$-ta liczba Catalana.
+
+    Ukorzenione drzewo jest drzewem binarnym, jeśli każdy wierzchołek ma co najwyżej
+    dwójkę dzieci przy czym co najwyżej jedno lewe dziecko i co najwyżej jedno prawe dziecko.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Triangulacją $n$ -- wierzchołkowego wielokąta wypukłego nazywamy zbiór
+    $(n - 3)$ wzajemnie nieprzecinających się jego przekątnych, które dzielą jego obszar na
+    $(n - 2)$ trójkątów.
+    \begin{enumerate}
+        \item ile jest triangulacji $n$--wierzchołkowego wielokąta wypukłego?
+        \item Ile jest triangulacji $n$--wierzchołkowego wielokąta wypukłego, w których każdy trójkąt
+              triangulacji ma przynajmniej jeden bok na brzegu wielokąta?
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[]
+    Wykaż, że liczba drzew etykietowanych na zbiorze ${1, ..., n}$ wynosi $n^{n-2}$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+
+\newpage
+\section{Zestaw}          % ZESTAW 4
+
+\begin{zad}
+    Oblicz $S(n, 2)$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Wykaż, że mamy dokładnie
+    \[\frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot  ... \cdot n^{\lambda_n} \cdot \lambda_1! \cdot ... \cdot \lambda_n!}\]
+    permutacji zbioru $[n]$ o typie $1^{\lambda_1} \cdot 2^{\lambda_2} \cdot ... \cdot n^{\lambda_n} $  (mających $\lambda_i$ cykli długości i dla $i \in [n]$).
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Posługując się interpretacją kombinatoryczną, wykaż tożsamość:
+    \[S(n+1,m+1) = \sum_k \binom{n}{k}S(k,m)\]
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Zakładając, że zachodzi równość:
+    \[
+        (x_1 + ... + x_k)^n = \sum_{n_1+...+n_k=n}\binom{n}{n_1 n_2 ... n_k}x_1^{n_1}\cdot...\cdot x_k^{n_k}
+    \]
+    podaj ile wynosi $\binom{n}{n_1 n_2 ... n_k}$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}
+    Wykaż, że
+    \[
+        \sum_{i=0}^{n} i \left[ n \atop i \right] = n! H_n,
+    \]
+    gdzie $H_n = 1 + \frac{1}{2} + ... + \frac{1}{n}$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[]
+    Wykaż, że dla dowolnego $x \in \mathbb{R}$ zachodzi:
+    \begin{enumerate}
+        \item $x^n = \sum_{k}S(n,k) x^{\underline{k}}$
+        \item $x^{\bar{n}} = \sum_{k} \left[n \atop k \right] x^k$.
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Zestaw}          % ZESTAW 5
+
+\begin{zad}[Autor 1, Autor 2]
+    Wykaż zasadę włączeń i wyłączeń korzystając z indukcji po liczbie zbiorów.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[Autor 1, Autor 2]
+    Wykaż, że mamy
+    \[
+        \sum_{j=0}^{m}(-1)^j \binom{m}{j}(m-j)^n
+    \]
+    suriekcji ze zbioru $[n]$ w zbiór $[m]$.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+\begin{zad}[Autor 1, Autor 2]
+    Ile jest ciągów długości $2n$ takich, że każda liczba $i \in [n]$
+    występuje dokładnie dwa razy oraz każde sąsiednie dwa wyrazy są różne.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[Autor 1, Autor 2]
+    Wykaż, że dla $n \geq 3$ zachodzi tożsamość
+    \[
+        D(n) = (n-1)(D(n-1) + D(n-2))
+    \]
+    gdzie $D(n)$ jest liczbą permutacji zboru $[n]$ bez punktów stałych.
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+
+
+\begin{zad}[Autor 1, Autor 2]
+    Wykaż (najlepiej kombinatorycznie), że dla dowolnych $n, k \in \mathbb{N}$
+    zachodzi:
+    \begin{enumerate}
+        \item $S(n, k) = \sum_{0 \leq m_1 \leq m_2 \leq ... \leq m_{n-k} \leq k} m_1m_2 \cdot ... \cdot m_{n-k}$
+        \item $c(n, k) = \sum_{0 < m_1 < m_2 < ... < m_{n-k} < k} m_1m_2 \cdot ... \cdot m_{n-k}$
+    \end{enumerate}
+\end{zad}
+\begin{mdframed}
+    \begin{enumerate}
+        \item Rozwiązanie Autora 1 podpunktu 1
+        \item Rozwiązanie Autora 1 podpunktu 2
+    \end{enumerate}
+\end{mdframed}
+\begin{mdframed}
+    \begin{enumerate}
+        \item Rozwiązanie Autora 2 podpunktu 1
+        \item Rozwiązanie Autora 2 podpunktu 2
+    \end{enumerate}
+\end{mdframed}
+
+
+\begin{zad}[Autor 1, Autor 2]
+    Ciąg podziałów zbioru ${1, ..., n}$ tworzymy następująco. Startujemy
+    od podziału zawierającego tylko zbiór ${1, ..., n}$. Podział $(i + 1)$--wszy
+    otrzymujemy z podziału $i$-tego poprzez:
+    \begin{enumerate}
+        \item wybranie jednego, co najmniej $2$-elementowego zbioru z podziału $i$-tego i podzielenie
+              go na dwa niepuste podzbiory,
+        \item podzielenie każdego, co najmniej $2$-elementowego zbioru z podziału $i$-tego na dwa
+              niepuste podzbiory.
+    \end{enumerate}
+    W obu przypadkach procedura kończy swoje działanie jeżeli wszystkie zbiory podziału są
+    jednoelementowe. Na ile sposobów można wykonać powyższe procedury? Na ile sposobów
+    możemy wykonać powyższe procedury zakładając, że po każdym kroku zbiory podziałów
+    zawierają kolejne liczby naturalne?
+\end{zad}
+\begin{mdframed}
+    Rozwiązanie Autora 1.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
+
+
+\newpage
+\section{Zestaw}          % Zestaw 6
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 7
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 8
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 9
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 10
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 11
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 12
+Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 13
+Nothing here. Tylko work in progress...
+
+
+
+
+
 
 \end{document}
