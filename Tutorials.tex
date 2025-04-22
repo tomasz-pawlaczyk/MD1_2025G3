@@ -103,7 +103,7 @@ linewidth=1pt}
 % Poczatek dokumentu
 \newpage
 \section{Zestaw}              % Zestaw 1
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Krzysztof Wójtowicz, Autor 2]
     Na płaszczyźnie poprowadzono $n$ prostych, z których żadne dwie nie
     są równoległe i żadne trzy nie przechodzą przez ten sam punkt.
     Wyznacz liczbę:
@@ -114,8 +114,19 @@ linewidth=1pt}
 \end{zad}
 \begin{mdframed}
     \begin{enumerate}
-        \item Rozwiązanie Autora 1 podpunktu 1
-        \item Rozwiązanie Autora 1 podpunktu 2
+        % Rozwiązanie: Krzysztof Wójtowicz
+        \item Zauważymy, że każda kolejna prosta przecina wszystkie poprzednie proste, 
+        a co za tym idzie również obszary, które są do nich "przyległe", dzieląc je na 
+        dwa. Każda poprzednia prosta ma dwa takie obszary, więc ich ogólna liczba to 
+        (odejmujemy obszary wspólne, czyli te "pośrodku" dwóch prostych, by ich nie duplikować): 
+        \[2(n-1) - (n-1-1) = n\] Zatem każda kolejna prosta dodaje n nowych obszarów: 
+        \[P(n) = P(n-1) + n = P(0) + \sum_{k=1}^{n} k = 1 + \frac{n(n+1)}{2}\]
+        gdzie $P(n)$ to liczba obszarów dla n prostych.
+        \newline
+        \item Liczbę obszarów ograniczonych otrzymamy odejmując liczbę obszarów nieograniczonych z wyniku z podpunku 1.
+        Każda prosta ma dwa "przyległe" obszary nieograniczone, więc liczba wszystkich takich obszarów to $2n$,
+        zatem liczba wszystkich obszarów ograniczonych to:
+        \[1 + \frac{n(n+1)}{2} - 2n = \frac{n^2 - 3n + 2}{2} = \frac{(n-1)(n-2)}{2}\]
     \end{enumerate}
 \end{mdframed}
 \begin{mdframed}
@@ -204,11 +215,21 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
-    Wykaż, że w grupie $n$ osób istnieją dwie, które mają taka samą liczbę znajomych.
+\begin{zad}[Krzysztof Wójtowicz, Autor 2]
+    Wykaż, że w grupie $n$ osób istnieją dwie, które mają taką samą liczbę znajomych.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    \underline{Dowód:}
+    \newline
+    W grupie $n$ osób każda osoba może mieć od $0$ do $n-1$ znajomych, ale wtedy:
+    \begin{enumerate}
+    \item Jeśli ktoś ma $0$ znajomych to maksymalna liczba znajomych to $n-2$, bo osoba mająca $n-1$ znajomych
+    musiałaby być znajomym z osobą, która ma ich $0$, co jest niemożliwe
+    \item Jeśli minimalna liczba znajomych to $1$ to wtedy maksymalna liczba znajomych to $n-1$
+    \end{enumerate}
+    W obydwu przypadkach mamy $n-1$ wartości oraz $n$ osób. Zatem na mocy zasady Dirichleta conajmniej dwie
+    osoby muszą mieć tę samą liczbę znajomych. 
+    $\blacksquare$
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -712,7 +733,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Autor 1, Krzysztof Wójtowicz]
     Wykaż, że mamy dokładnie
     \[\frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot  ... \cdot n^{\lambda_n} \cdot \lambda_1! \cdot ... \cdot \lambda_n!}\]
     permutacji zbioru $[n]$ o typie $1^{\lambda_1} \cdot 2^{\lambda_2} \cdot ... \cdot n^{\lambda_n} $  (mających $\lambda_i$ cykli długości i dla $i \in [n]$).
@@ -721,7 +742,24 @@ linewidth=1pt}
     Rozwiązanie Autora 1.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Niech $A$ będzie zbiorem wszystkich permutacji zbioru $[n]$ o typie jak w poleceniu.
+    Niech $a_i \in [n]$, policzymy ilość cykli długości $k$: $(a_1,a_2,\ldots,a_k)$ w zbiorze $n$ elementowych:
+    \[\binom{n}{k} \cdot \frac{k!}{k} = \frac{n!}{(n-k)! \cdot k}\]
+    Wybieramy $k$ elementów do cyklu i następnie wybieramy ich kolejność (pierwszy element 
+    nie ma znaczenia w cyklu), stąd powyższy wynik.
+    \newline \newline
+    Policzymy ilość wszystkich możliwych cykli długości $1,2,\ldots,n$:
+    \[\underbrace{\frac{n!}{(n-1)! \cdot 1} \cdot \frac{(n-1)!}{(n-2)! \cdot 1} \cdot \ldots}_{\lambda_1} \cdot 
+    \underbrace{\frac{(n-\lambda_1)!}{(n-\lambda_1-2)! \cdot 2} \cdot \ldots}_{\lambda_2} \cdot \ldots = 
+    \frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot \ldots \cdot n^{\lambda_n}} \]
+    Czyli mnożymy ilość możliwych cykli $k$ elementowych dla $\lambda_k$ ich ilości.
+    \newline \newline
+    W celu otrzymania liczby $|A|$ musimy jeszcze uzwględnić brak znaczenia kolejności
+    występowania cykli w permutacji, liczba możliwych ustawień to:
+    \[{\lambda_1}! \cdot {\lambda_2}! \cdot \ldots \cdot {\lambda_n}!\]
+    Zatem liczba wszystkich permutacji $a \in A$:
+    \[|A| = \frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot \ldots \cdot n^{\lambda_n}
+    \cdot {\lambda_1}! \cdot {\lambda_2}! \cdot \ldots \cdot {\lambda_n}!} \; \; \; \; \blacksquare\]
 \end{mdframed}
 
 
