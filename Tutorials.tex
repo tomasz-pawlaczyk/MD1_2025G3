@@ -18,6 +18,9 @@
 \usepackage{geometry}
 \usepackage{enumitem}
 
+            % Obrazki
+\usepackage{graphicx}
+
 
 
             % Ustawienia ramek
@@ -451,13 +454,19 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Maciej Wełpa, Autor 2]
     (Reguła sumowania po górnym indeksie). Udowodnij, że dla
     $n, k \in \mathbb{N}$ zachodzi
     \[\sum_{j=0}^n\binom{j}{k} = \binom{n+1}{k+1}\]
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Maciej Wełpa
+    \textbf{Lewa strona:} 
+    Niech X to zbiór wszystkich k + 1 elementów z ze zbioru n + 1 elementów, \\
+    \(|X|\) = \(\binom{n + 1}{k + 1}\). \\ 
+    \textbf{Prawa strona:} Niech \( X_j \) to podzbiory \(|k+1|\) elementowe ze zbioru X, które
+    zawierają maksymalny element j+1. np. dla k = 2 \( X_3 \) = \{1, 2, 4\}, \( X_4 \) = \{1, 3, 5\} 
+    - ostatni element jest największy, pozostałe dwa to wybrane z \{1...j\}. Rozważamy j elementów mniejszych od j+1, spośród nich wybieramy k elementów - mamy \(\binom{j}{k}\) możliwości. Sumując po j dodajemy do siebie wszystkie możliwości.
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -643,14 +652,25 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Maciej Wełpa, Autor 2]
     Udowodnij, że liczba ukorzenionych drzew binarnych na $n$ wierzchołkach to $n$-ta liczba Catalana.
 
     Ukorzenione drzewo jest drzewem binarnym, jeśli każdy wierzchołek ma co najwyżej
     dwójkę dzieci przy czym co najwyżej jedno lewe dziecko i co najwyżej jedno prawe dziecko.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Maciej Wełpa
+    Spośród n wierzchołków, jeden wykorzystujemy na wierzchołek.\\
+    Spośród pozostałych n-1 wybieramy i na lewe poddrzewo, a pozostałe n-1-i na prawe. W ten sposób możemy postępować rekurencyjnie\\
+    Załóżmy funkcję \( T(k) \), która liczy ilość drzew. Jest ona rekurencyjna, bo każdy nowy korzeń może utworzyć nowe drzewo, a ilość korzeni lewo/prawo może się zmieniać, więc aby policzyć wszystkie możliwości skorzystamy z sumy.
+    \[
+    T(n) = \sum_{i=0}^{n-1} T(i) \cdot T(n-1-i)
+    \]
+    a to odpowiada rekurencyjnemu wzorowi Catalana.
+    \begin{center}
+    \includegraphics[width=0.7\textwidth]{images/zad36.jpeg}
+\end{center}
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -765,12 +785,15 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Maciej Wełpa, Autor 2]
     Posługując się interpretacją kombinatoryczną, wykaż tożsamość:
     \[S(n+1,m+1) = \sum_k \binom{n}{k}S(k,m)\]
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Maciej Wełpa
+    \textbf{Lewa strona:} Podział zbioru n+1-elementowego na m+1 niepustych podzbiorów\\
+    \textbf{Prawa strona:} Bierzemy n+1 element i tworzymy z niego nowy zbiór (domyślnie podzbiór nr m+1). Z pozostałych 
+    n elementów wybieramy n-k (\(\binom{n}{k}\) =\(\binom{n}{n-k}\)), które będą w zbiorze nr m+1 z elementem n+1. Pozostałe k elementów dzielimy na m niepustych podzbiorów. Używamy sumy, aby rozważyć wszystkie możliwości podzielenia elementów.
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
