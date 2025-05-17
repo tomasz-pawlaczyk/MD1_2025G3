@@ -880,7 +880,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Wykaż, że
     \[
         \sum_{i=0}^{n} i \left[ n \atop i \right] = n! H_n,
@@ -888,7 +888,31 @@ linewidth=1pt}
     gdzie $H_n = 1 + \frac{1}{2} + ... + \frac{1}{n}$.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    %Rozwiązanie: Katarzyna Szwed
+    Rozważmy zbiór $X := \{(\sigma, c) : \sigma$ - permutacja zbioru $[n]$, $c$ - wyróżniony cykl z permutacji $\sigma\}$.
+
+    Rozważmy rodzinę zbiorów $\{A_i\}_{i=0}^{n}$ taką, że $A_i = \{(\sigma, c) \in X :$ permutacja $\sigma$ ma $i$ cykli$\}$. 
+    Zauważmy, że $|A_i| = i\left[ n \atop i\right]$ (najpierw liczymy liczbę permutacji $[n]$ o $i$ cyklach, a potem wybieramy
+    jeden z $i$ cykli). 
+    
+    Rodzina $A_i$ jest rozłącznym pokryciem zbioru $X$, zatem: 
+    \[|X| = \sum_{i=0}^{n} |A_i| = \sum_{i=0}^{n} i\left[ n \atop i\right]\].
+
+    Teraz rozważmy rodzinę zbiorów $\{B_k\}_{k=1}^{n}$ taką, że $B_k = \{(\sigma, c) \in X :$ cykl $c$ ma $k$ elementów$\}$. 
+    Zauważmy, że $|B_k| = {n \choose k} \frac{k!}{k} (n-k)!$, ponieważ najpierw wybieramy $k$ elementów do cyklu $c$, potem permutujemy
+    je, ale usuwamy kolejność pierwszego elementu, na koniec permutujemy resztę elementów zbioru $[n]$.
+
+    Rodzina $B_k$ jest rozłącznym pokryciem zbioru $X$, zatem:
+    \[
+        |X| = \sum_{k=1}^{n} |B_k| = \sum_{k=1}^{n} {n \choose k} \frac{k!}{k} (n-k)! = \\
+        \sum_{k=1}^n \frac{n!}{k!(n-k)!}\frac{k!}{k} (n-k)! = \sum_{k=1}^{n}\frac{n!}{k} = 
+        n! \sum_{k=1}^{n} \frac{1}{k} = n! H_n
+    \]
+
+    Otrzymujemy więc:
+    \[\sum_{i=0}^{n} i\left[ n \atop i\right] = n! H_n\]
+
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
