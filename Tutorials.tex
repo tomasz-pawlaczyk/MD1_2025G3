@@ -733,13 +733,21 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Krzysztof Wójtowicz]
+\begin{zad}[Konstanty Sobczyński, Krzysztof Wójtowicz]
     Wykaż, że mamy dokładnie
     \[\frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot  ... \cdot n^{\lambda_n} \cdot \lambda_1! \cdot ... \cdot \lambda_n!}\]
     permutacji zbioru $[n]$ o typie $1^{\lambda_1} \cdot 2^{\lambda_2} \cdot ... \cdot n^{\lambda_n} $  (mających $\lambda_i$ cykli długości i dla $i \in [n]$).
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    Najpierw rozważmy wszystkie możliwe permutacje zbioru $[n]$. Jest ich $n!$.
+    \newline \newline
+    Aby uzyskać permutacje o typie $1^{\lambda_1} \cdot 2^{\lambda_2} \cdot ... \cdot n^{\lambda_n}$, dzielimy nasz ciag (operujemy na jednym ciągu, ale jest to uogólnienie na wszystkie powstałe po $n!$ permutacjach) na kolejno $\lambda_1$ cykli długości $1$, $\lambda_2$ cykli długości $2$, ..., $\lambda_n$ cykli długości $n$.
+    Jednak aby były to permutacje, to musimy podzielić początkowe $n!$ przez $\lambda_i!$ dla $i \in [n]$, ponieważ cykle długości $i$ są dla nas nierozrónialne, to znaczy, że dla na przykład n = 3 i $\lambda_1 = 3$ otrzymamy (1)(2)(3) oraz (2)(1)(3) jako różne permutacje, ale dla nas to to samo.
+    \newline \newline
+    Dodatkowo musimy podzielić przez $i^{\lambda_i}$, ponieważ w każdej uzyskanej permutacji chwilowo wyróżniamy element pierwszy (tzn przykladowo cykle (13) i (31) są dla nas różne), więc każdy z tych cykli musimy podzielić przez $i$. 
+    \newline \newline
+    Zatem otrzymujemy wzór:
+    \[\frac{n!}{1^{\lambda_1} \cdot 2^{\lambda_2} \cdot  ... \cdot n^{\lambda_n} \cdot \lambda_1! \cdot ... \cdot \lambda_n!}\ \; \; \; \; \blacksquare\]
 \end{mdframed}
 \begin{mdframed}
     Niech $A$ będzie zbiorem wszystkich permutacji zbioru $[n]$ o typie jak w poleceniu.
@@ -765,7 +773,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Autor 1, Konstanty Sobczyński]
     Posługując się interpretacją kombinatoryczną, wykaż tożsamość:
     \[S(n+1,m+1) = \sum_k \binom{n}{k}S(k,m)\]
 \end{zad}
@@ -773,7 +781,8 @@ linewidth=1pt}
     Rozwiązanie Autora 1.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Rozważmy takie S(n+1,m+1), że $n+1 \in A$. $|A| = k+1$ gdzie $ 0 \leq k \leq n$. Wówczas na $\binom{n}{k}$ sposobów możemy wybrać $k$ elementów z $n$ pozostałych elementów zbioru $A$. pozostałe $m$ podziałów uzyskujemy z $n-k$ elementów. Zatem $S(n-k,m)$ sposobów. Otrzymaliśmy, że: dla $n+1 \in A, |A| = k+1$ mamy $\binom{n}{k}S(k,m)$ sposobów. Zatem sumujemy po $k$ (bo przypadki są rozłączne i pokrywają wszystkie możliwe podziały na m+1 podzbiorów) i mamy:
+    \[S(n+1,m+1) = \sum_k \binom{n}{k}S(n-k,m) = \sum_k \binom{n}{n-k}S(n-k,m) = \sum_k \binom{n}{k}S(k,m)\ \; \; \; \; \blacksquare\]
 \end{mdframed}
 
 
@@ -863,7 +872,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Autor 1, Konstanty Sobczyński]
     Wykaż, że mamy
     \[
         \sum_{j=0}^{m}(-1)^j \binom{m}{j}(m-j)^n
@@ -874,7 +883,21 @@ linewidth=1pt}
     Rozwiązanie Autora 1.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Skorzystamy z zasady włączeń i wyłączeń. 
+    Niech $U$ - zbiór funkcji z $[n]$ w $[m]$.
+    \newline \newline
+    Niech $A_i$ - zbiór funkcji $[n]$ w $[m]$, $f \in [m]$, takich, że $i \not\in Im(f)$.
+    \newline \newline
+    Niech $W$ - zbiór surjekcji z $[n]$ w $[m]$.
+    \newline \newline
+    Wówczas $|W| = |U| - |\bigcup_{i=1}^{m} A_i|$.
+    $|U| = m^n$ - każda funkcja z $[n]$ w $[m]$ ma $m$ możliwości dla każdego elementu, więc $m^n$.
+    \newline \newline
+    $|\bigcup_{i=1}^{m} A_i| = \sum_{\substack{I \subseteq [m] \\ I \neq \emptyset}} (-1)^{|I|+1} |\bigcap_{i \in I} A_i| = \sum_{\substack{I \subseteq [m] \\ I \neq \emptyset}} (-1)^{|I|+1} (m - |I|)^n = \sum_{j=1}^{m}(-1)^{j+1}
+    \binom{m}{j}(m-j)^n$
+    \newline \newline
+    Zatem $|W| = m^n - \sum_{j=1}^{m}(-1)^{j+1} \binom{m}{j}(m-j)^n = \sum_{j=0}^{m}(-1)^j \binom{m}{j}(m-j)^n\; \; \; \; \blacksquare$.
+
 \end{mdframed}
 
 
