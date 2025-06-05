@@ -503,12 +503,24 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Krzysztof Wojczakowski, Autor 2]
     Ile jest funkcji $f:\{1, ..., n\} \to \{1, ..., n\}$ monotonicznych takich,
     że $f(i) \leq f(j) $ dla $i < j$?
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    %Rozwiązanie: Krzysztof Wojczakowski
+    Zauważmy, że te funkcje tworza tak jakby jakby ciąg , który ma być niemalejący. 
+    Możemy to zobrazować jako kratę gdzie wartości na dole to liczby od 1 do n , a idąc do góry 
+    mozemy tylko iść w prawo lub w górę. , gdie tyle ile kresek w górę przy danej liczbie to tyle ile razy tą liczbę wybieramy.
+    \vspace{0.3em} % mały odstęp w pionie
+
+    \noindent
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/zadanie28.png}
+
+    Końcowo poszliśmy $n-1$ razy w prawo i $n-1$ razy w górę, czyli mamy $n-1+n-1 = 2n - 2$ kroków
+    W rezultacie takich funkcji jest:
+    \( \binom{2n-2}{n-1} \)
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -517,12 +529,20 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Krzysztof Wojczakowski, Autor 2]
     Ile jest $k$--elementowych podzbiorów zbioru $n$--elementowego, które nie
     zawierają dwóch sąsiednich liczb?
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    %Rozwiązanie: Krzysztof Wojczakowski
+    Zauważmy, że jeżeli mamy mamy do wybrania $k$ elementow , to równolegle to oznacza , że 
+    musimy zrobić $k-1$ "przerw" pomiędzy nimi. Wygląda to tak:
+    \verb|_0_0_0_..._0_0_| 
+    gdzie zero to oznacza ze liczby nie bierzemy, a podłoga oznacza, że bierzemy. 
+    Zostaje nam $n-(k+1)$ miejsc do wyboru, czyli $n-k+1$ miejsc.
+    w takim razie ilość $k$ elementowych podzbiorów jest : 
+    \( \binom{n-k+1}{k} \)
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
