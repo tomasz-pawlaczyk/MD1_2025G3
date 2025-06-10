@@ -1621,7 +1621,7 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     Rozwiązanie Autora 2.
 \end{mdframed}
 
-\begin{zad}[Filip Sajko]
+\begin{zad}[Filip Sajko, Julian Sowiński]
     Niech $G(z)$ będzie funkcją tworzącą ciągu $\{g_n\}_{n \geq 0}$.
     Jaki ciąg generuje funkcja $G(z) + G(-z)$, a jaki $G(z) - G(-z)$?
 \end{zad}
@@ -1633,7 +1633,23 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     \[G(z) - G(-z) = 2(g_1x + g_3x^3 + g_5x^5 + ...)\]
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    $$ G(z) = g_0 + g_1 z + g_2 z^2 + g_3 z^3 + g_4 z^4 + \dots $$
+    
+    \subsection*{a) Funkcja tworząca $G(z) + G(-z)$}
+    
+    Najpierw zapiszmy postać funkcji $G(-z)$, podstawiając $-z$ w miejsce $z$:
+    $$ G(-z) = \sum_{n=0}^{\infty} g_n (-z)^n = g_0 - g_1 z + g_2 z^2 - g_3 z^3 + g_4 z^4 - \dots $$
+    Teraz dodajmy obie funkcje stronami. Zauważmy, że wszystkie wyrazy z nieparzystymi potęgami $z$ się skrócą:
+    $$ G(z) + G(-z) = (g_0 + g_1 z + g_2 z^2 + \dots) + (g_0 - g_1 z + g_2 z^2 - \dots) $$
+    $$ G(z) + G(-z) = (g_0+g_0) + (g_1-g_1)z + (g_2+g_2)z^2 + (g_3-g_3)z^3 + \dots $$
+    $$ G(z) + G(-z) = 2g_0 + 2g_2 z^2 + 2g_4 z^4 + \dots = 2(g_0 + g_2x^2 + g_4x^4 + ...)$$
+
+    \subsection*{b) Funkcja tworząca $G(z) - G(-z)$}
+
+    Postępujemy analogicznie, tym razem odejmując funkcje. W tym przypadku skrócą się wyrazy z parzystymi potęgami $z$:
+    $$ G(z) - G(-z) = (g_0 + g_1 z + g_2 z^2 + \dots) - (g_0 - g_1 z + g_2 z^2 - \dots) $$
+    $$ G(z) - G(-z) = (g_0-g_0) + (g_1-(-g_1))z + (g_2-g_2)z^2 + (g_3-(-g_3))z^3 + \dots $$
+    $$ G(z) - G(-z) = 2g_1 z + 2g_3 z^3 + 2g_5 z^5 + \dots = 2(g_1x + g_3x^3 + g_5x^5 + ...)$$
 \end{mdframed}
 
 
@@ -1760,6 +1776,115 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
 
     Poniżej przedstawiono rozwiązania podanych rekurencji liniowych z wykorzystaniem funkcji tworzących,
     odwzorowując styl i kolejność kroków z przedstawionych zdjęć. \newline\newline
+    \textbf{Przykład (iv)} \newline
+    Dana jest rekurencja:
+    $a_0 = 0, a_1 = 1,$
+    $a_{n+2} = 2a_{n+1} - a_n \quad \text{dla } n \ge 0.$
+
+    Definiujemy funkcję tworzącą $a(x) = \sum_{n=0}^{\infty} a_n x^n$.
+    Rozpisujemy $a(x)$, podstawiając warunki początkowe i rekurencję:
+    $$ a(x) = a_0 + a_1 x + \sum_{n=2}^{\infty} a_n x^n = 0 + x + \sum_{n=2}^{\infty} (2a_{n-1} - a_{n-2}) x^n $$
+    Rozbijamy sumę i wyciągamy odpowiednie potęgi $x$:
+    $$ a(x) = x + 2\sum_{n=2}^{\infty} a_{n-1}x^n - \sum_{n=2}^{\infty} a_{n-2}x^n $$
+    $$ a(x) = x + 2x\sum_{n=2}^{\infty} a_{n-1}x^{n-1} - x^2\sum_{n=2}^{\infty} a_{n-2}x^{n-2} $$
+    Wyrażamy sumy przez $a(x)$ i warunek początkowy $a_0 = 0$:
+    $$ \sum_{n=2}^{\infty} a_{n-1}x^{n-1} = \sum_{k=1}^{\infty} a_k x^k = a(x) - a_0 = a(x) $$
+    $$ \sum_{n=2}^{\infty} a_{n-2}x^{n-2} = \sum_{k=0}^{\infty} a_k x^k = a(x) $$
+    Podstawiamy z powrotem do równania:
+    $$ a(x) = x + 2x \cdot a(x) - x^2 \cdot a(x) $$
+    Przenosimy wszystkie wyrazy zawierające $a(x)$ na lewą stronę:
+    $$ a(x) - 2x a(x) + x^2 a(x) = x $$
+    $$ a(x) (1 - 2x + x^2) = x $$
+    Zauważamy, że mianownik to wzór skróconego mnożenia:
+    $$ a(x) (1 - x)^2 = x $$
+    Ostateczna postać funkcji tworzącej $a(x)$:
+    $$ a(x) = \frac{x}{(1 - x)^2} $$
+    Nie musimy stosować ułamków prostych. Możemy od razu skorzystać ze znanego rozwinięcia w szereg potęgowy:
+    $$ \frac{1}{(1-x)^2} = \sum_{n=0}^{\infty} (n+1)x^n $$
+    Mnożąc ten szereg przez $x$, otrzymujemy naszą funkcję tworzącą:
+    $$ a(x) = x \cdot \frac{1}{(1-x)^2} = x \sum_{n=0}^{\infty} (n+1)x^n = \sum_{n=0}^{\infty} (n+1)x^{n+1} $$
+    Aby znaleźć współczynnik przy $x^n$, musimy zmienić indeks sumowania. Niech $k=n+1$. Gdy $n=0$, to $k=1$.
+    $$ a(x) = \sum_{k=1}^{\infty} k x^k $$
+    Ponieważ dla $k=0$ wyraz $k x^k$ jest równy 0, możemy bez zmiany wartości sumy zacząć sumowanie od $k=0$:
+    $$ a(x) = \sum_{k=0}^{\infty} k x^k = \sum_{n=0}^{\infty} n x^n $$
+    Porównując to z definicją $a(x) = \sum_{n=0}^{\infty} a_n x^n$, otrzymujemy bezpośrednio wzór jawny na $n$-ty wyraz ciągu:
+    $$ a_n = n $$
+    \textbf{Przykład (v)} \newline
+    Dana jest rekurencja:
+    $a_0 = 0, a_1 = 1,$
+    $a_{n+2} = a_{n+1} - a_n \quad \text{dla } n \ge 0.$
+
+    Definiujemy funkcję tworzącą $a(x) = \sum_{n=0}^{\infty} a_n x^n$.
+    Rozpisujemy $a(x)$, podstawiając warunki początkowe i rekurencję:
+    $$ a(x) = a_0 + a_1 x + \sum_{n=2}^{\infty} a_n x^n = 0 + x + \sum_{n=2}^{\infty} (a_{n-1} - a_{n-2}) x^n $$
+    Rozbijamy sumę i wyciągamy odpowiednie potęgi $x$:
+    $$ a(x) = x + \sum_{n=2}^{\infty} a_{n-1}x^n - \sum_{n=2}^{\infty} a_{n-2}x^n $$
+    $$ a(x) = x + x\sum_{n=2}^{\infty} a_{n-1}x^{n-1} - x^2\sum_{n=2}^{\infty} a_{n-2}x^{n-2} $$
+    Wyrażamy sumy przez $a(x)$ i warunek początkowy $a_0 = 0$:
+    $$ \sum_{n=2}^{\infty} a_{n-1}x^{n-1} = \sum_{k=1}^{\infty} a_k x^k = a(x) - a_0 = a(x) $$
+    $$ \sum_{n=2}^{\infty} a_{n-2}x^{n-2} = \sum_{k=0}^{\infty} a_k x^k = a(x) $$
+    Podstawiamy z powrotem do równania:
+    $$ a(x) = x + x \cdot a(x) - x^2 \cdot a(x) $$
+    Przenosimy wszystkie wyrazy zawierające $a(x)$ na lewą stronę:
+    $$ a(x) - x a(x) + x^2 a(x) = x $$
+    $$ a(x) (1 - x + x^2) = x $$
+    Ostateczna postać funkcji tworzącej $a(x)$:
+    $$ a(x) = \frac{x}{1 - x + x^2} $$
+    Aby łatwo rozwinąć tę funkcję w szereg, stosujemy trik polegający na pomnożeniu licznika i mianownika przez $(1+x)$, aby w mianowniku otrzymać sumę sześcianów:
+    $$ a(x) = \frac{x(1+x)}{(1 - x + x^2)(1+x)} = \frac{x+x^2}{1+x^3} $$
+    Teraz możemy potraktować to jako szereg geometryczny:
+    $$ a(x) = (x+x^2) \cdot \frac{1}{1 - (-x^3)} = (x+x^2) \sum_{k=0}^{\infty} (-x^3)^k = (x+x^2) \sum_{k=0}^{\infty} (-1)^k x^{3k} $$
+    Rozdzielamy na dwie sumy:
+    $$ a(x) = \sum_{k=0}^{\infty} (-1)^k x^{3k+1} + \sum_{k=0}^{\infty} (-1)^k x^{3k+2} $$
+    Z tej postaci odczytujemy wzór jawny na $a_n$. Współczynniki $a_n$ są niezerowe tylko wtedy, gdy potęga $n$ jest postaci $3k+1$ lub $3k+2$.
+    Ostateczny wzór na $n$-ty wyraz ciągu jest więc określony w zależności od reszty z dzielenia $n$ przez 3:
+    $$
+    a_n =
+    \begin{cases}
+    0 & \text{dla } n \equiv 0 \pmod{3} \\
+    (-1)^{(n-1)/3} & \text{dla } n \equiv 1 \pmod{3} \\
+    (-1)^{(n-2)/3} & \text{dla } n \equiv 2 \pmod{3}
+    \end{cases}
+    $$
+    \textbf{Przykład (vi)} \newline
+    Dana rekurencja:
+    $a_0 = 1, a_1 = 5, a_2 = 11,$
+    $a_{n+3} = 3a_{n+2} + 2a_{n+1} -2a_n \quad \text{dla } n \ge 0.$
+
+    Definiujemy funkcję tworzącą $a(x) = \sum_{n=0}^{\infty} a_n x^n$.
+    Wyrażamy $a(x)$ przez jej początkowe wyrazy i sumę opartą na rekurencji:
+    $$ a(x) = a_0 + a_1 x + a_2 x^2 + \sum_{n=3}^{\infty} (3a_{n-1} + 2a_{n-2} - 2a_{n-3}) x^n $$
+    Podstawiamy wartości początkowe i przekształcamy sumy:
+    $$ a(x) = 1 + 5x + 11x^2 + 3x\sum_{n=3}^{\infty}a_{n-1}x^{n-1} + 2x^2\sum_{n=3}^{\infty}a_{n-2}x^{n-2} - 2x^3\sum_{n=3}^{\infty}a_{n-3}x^{n-3} $$
+    Sumy te możemy wyrazić przez funkcję $a(x)$ i jej początkowe wyrazy:
+    \begin{itemize}
+        \item $ \sum_{n=3}^{\infty}a_{n-1}x^{n-1} = \sum_{k=2}^{\infty}a_{k}x^{k} = a(x) - a_0 - a_1x = a(x) - 1 - 5x $
+        \item $ \sum_{n=3}^{\infty}a_{n-2}x^{n-2} = \sum_{k=1}^{\infty}a_{k}x^{k} = a(x) - a_0 = a(x) - 1 $
+        \item $ \sum_{n=3}^{\infty}a_{n-3}x^{n-3} = \sum_{k=0}^{\infty}a_{k}x^{k} = a(x) $
+    \end{itemize}
+    Podstawiamy te wyrażenia z powrotem do równania na $a(x)$:
+    $$ a(x) = 1 + 5x + 11x^2 + 3x(a(x) - 1 - 5x) + 2x^2(a(x) - 1) - 2x^3 a(x) $$
+    Upraszczamy i grupujemy wyrazy z $a(x)$:
+    $$ a(x) = 1 + 5x + 11x^2 + 3xa(x) - 3x - 15x^2 + 2x^2a(x) - 2x^2 - 2x^3a(x) $$
+    $$ a(x) = (1 + 2x - 6x^2) + a(x)(3x + 2x^2 - 2x^3) $$
+    Przenosimy wszystkie wyrazy zawierające $a(x)$ na lewą stronę:
+    $$ a(x) (1 - 3x - 2x^2 + 2x^3) = 1 + 2x - 6x^2 $$
+    Ostateczna postać funkcji tworzącej $a(x)$:
+    $$ a(x) = \frac{1 + 2x - 6x^2}{1 - 3x - 2x^2 + 2x^3} $$
+    Mianownik faktoryzuje się w oparciu o pierwiastki równania charakterystycznego $r^3 - 3r^2 - 2r + 2 = 0$, którymi są $r_1=-1$, $r_2=2+\sqrt{2}$, $r_3=2-\sqrt{2}$. Daje to faktoryzację mianownika funkcji tworzącej:
+    $$ 1 - 3x - 2x^2 + 2x^3 = (1+x)(1-(2+\sqrt{2})x)(1-(2-\sqrt{2})x) $$
+    Rozkład na ułamki proste ma postać:
+    $$ a(x) = \frac{A}{1+x} + \frac{B}{1-(2+\sqrt{2})x} + \frac{C}{1-(2-\sqrt{2})x} $$
+    Po żmudnych, ale prostych obliczeniach, otrzymujemy wartości stałych:
+    $$ A = -1, \quad B = 1, \quad C = 1 $$
+    Zatem:
+    $$ a(x) = \frac{-1}{1+x} + \frac{1}{1-(2+\sqrt{2})x} + \frac{1}{1-(2-\sqrt{2})x} $$
+    Przekształcamy każdy człon z powrotem na szereg potęgowy, używając wzoru $\frac{1}{1-u} = \sum_{n=0}^{\infty} u^n$:
+    $$ a(x) = - \sum_{n=0}^{\infty} (-x)^n + \sum_{n=0}^{\infty} ((2+\sqrt{2})x)^n + \sum_{n=0}^{\infty} ((2-\sqrt{2})x)^n $$
+    Grupując współczynniki przy $x^n$, otrzymujemy jawny wzór na $a_n$:
+    $$ a_n = -(-1)^n + (2+\sqrt{2})^n + (2-\sqrt{2})^n $$
+    Co można zapisać jako:
+    $$ a_n = (-1)^{n+1} + (2+\sqrt{2})^n + (2-\sqrt{2})^n $$
     \textbf{Przykład (vii)} \newline
     Dana rekurencja:
     $a_0 = 1, a_1 = 1,$
@@ -1938,7 +2063,7 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     Rozwiązanie Autora 2.
 \end{mdframed}
 
-\begin{zad}
+\begin{zad}[Konstanty Sobczyński (1-3), Julian Sowiński (4-6), Autor 2]
     Znajdź funkcje tworzące dla następujących ciągów:
     \begin{enumerate}
         \item $p(n | \text{wszystkie podziały} n)$
@@ -1950,7 +2075,53 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     \end{enumerate}
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    \subsection*{4) p(n | każdy składnik jest parzysty)}
+    
+    Chcemy znaleźć funkcję tworzącą dla podziałów liczby $n$, w których mogą występować \textbf{jedynie składniki parzyste}, czyli liczby ze zbioru $\{2, 4, 6, 8, \dots\}$.
+    
+    Dla każdego składnika parzystego $k=2j$ (gdzie $j \ge 1$), możemy go użyć dowolną liczbę razy. Odpowiadają temu następujące szeregi geometryczne:
+    \begin{itemize}
+        \item Dla składnika 2: $(1 + x^2 + x^4 + x^6 + \dots) = \frac{1}{1-x^2}$
+        \item Dla składnika 4: $(1 + x^4 + x^8 + x^{12} + \dots) = \frac{1}{1-x^4}$
+        \item Dla składnika 6: $(1 + x^6 + x^{12} + x^{18} + \dots) = \frac{1}{1-x^6}$
+        \item i tak dalej...
+    \end{itemize}
+    
+    Funkcja tworząca jest iloczynem tych szeregów dla wszystkich parzystych liczb naturalnych.
+    $$ P(x) = \left(\frac{1}{1-x^2}\right) \left(\frac{1}{1-x^4}\right) \left(\frac{1}{1-x^6}\right) \cdots $$
+    Możemy to zapisać zwięźle za pomocą znaku iloczynu, sumując po wszystkich liczbach parzystych $2k$ dla $k \ge 1$:
+    $$ P(x) = \prod_{k=1}^{\infty} \frac{1}{1-x^{2k}} $$
+
+    \subsection*{5) p(n | każdy składnik jest ograniczony przez m)}
+
+    W tym przypadku składniki podziału mogą być \textbf{jedynie liczbami ze zbioru $\{1, 2, 3, \dots, m\}$}. Każdą z tych liczb możemy używać dowolną liczbę razy.
+    
+    Tworzymy iloczyn szeregów geometrycznych, ale tylko dla składników od 1 do $m$:
+    $$ P(x) = (1+x+x^2+\dots)(1+x^2+x^4+\dots)\cdots(1+x^m+x^{2m}+\dots) $$
+    Upraszczając każdy z tych szeregów, otrzymujemy:
+    $$ P(x) = \left(\frac{1}{1-x}\right) \left(\frac{1}{1-x^2}\right) \cdots \left(\frac{1}{1-x^m}\right) $$
+    Co w notacji iloczynowej zapisujemy jako:
+    $$ P(x) = \prod_{k=1}^{m} \frac{1}{1-x^k} $$
+
+    \subsection*{6) p(n | każdy składnik może występować co najwyżej m razy)}
+
+    Tutaj ograniczenie dotyczy \textbf{liczby wystąpień} każdego składnika. Dowolna liczba naturalna $k$ może być składnikiem podziału, ale może pojawić się w sumie co najwyżej $m$ razy.
+    
+    Dla każdego składnika $k$ tworzymy wielomian, który reprezentuje możliwość użycia go od 0 do $m$ razy:
+    \begin{itemize}
+        \item Dla składnika 1: $(1 + x^1 + x^2 + \dots + x^m)$
+        \item Dla składnika 2: $(1 + x^2 + x^4 + \dots + x^{2m})$
+        \item Dla składnika 3: $(1 + x^3 + x^6 + \dots + x^{3m})$
+        \item Dla składnika k: $(1 + x^k + x^{2k} + \dots + x^{km})$
+    \end{itemize}
+    
+    Każdy z tych wielomianów jest skończonym szeregiem geometrycznym, który możemy uprościć za pomocą wzoru $\sum_{i=0}^{m} r^i = \frac{1-r^{m+1}}{1-r}$. Dla składnika $k$, $r=x^k$:
+    $$ 1 + x^k + x^{2k} + \dots + x^{km} = \frac{1 - (x^k)^{m+1}}{1-x^k} = \frac{1 - x^{k(m+1)}}{1-x^k} $$
+    
+    Całkowita funkcja tworząca jest iloczynem takich wyrażeń dla wszystkich możliwych składników $k \ge 1$:
+    $$ P(x) = \left(\frac{1-x^{1(m+1)}}{1-x^1}\right) \left(\frac{1-x^{2(m+1)}}{1-x^2}\right) \left(\frac{1-x^{3(m+1)}}{1-x^3}\right) \cdots $$
+    Zapisując to w zwartej formie iloczynowej, otrzymujemy:
+    $$ P(x) = \prod_{k=1}^{\infty} \frac{1 - x^{k(m+1)}}{1-x^k} $$
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
