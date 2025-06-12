@@ -566,7 +566,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Katarzyna Szwed, Autor 2]
+\begin{zad}[Katarzyna Szwed, Mateusz Rabantek]
     Udowodnij poniższe tożsamości na dwa sposoby: posługując się interpretacją
     kombinatoryczną albo rozwinięciem dwumianu $(1 + x)^n$:
     \begin{enumerate}
@@ -645,9 +645,103 @@ linewidth=1pt}
 \end{mdframed}
 \begin{mdframed}
     \begin{enumerate}
-        \item Rozwiązanie Autora 2 podpunktu 1
-        \item Rozwiązanie Autora 2 podpunktu 2
-        \item Rozwiązanie Autora 2 podpunktu 3
+        %rozwiązanie: Mateusz Rabantek
+        \textbf{Podpunkt 1:}
+
+        Zacznijmy od rozwinięcia dwumianu Newtona:
+        \begin{equation}
+        (1+x)^n = \sum_{k=0}^{n} \binom{n}{k} x^k
+        \end{equation}
+
+        Różniczkujemy obie strony względem $x$:
+        \begin{equation}
+        \frac{d}{dx}(1+x)^n = \frac{d}{dx}\sum_{k=0}^{n} \binom{n}{k} x^k
+        \end{equation}
+
+        \begin{equation}
+        n(1+x)^{n-1} = \sum_{k=0}^{n} k \binom{n}{k} x^{k-1}
+        \end{equation}
+
+        Podstawiamy $x = 1$:
+        \begin{equation}
+        n \cdot 2^{n-1} = \sum_{k=0}^{n} k \binom{n}{k} \cdot 1^{k-1} = \sum_{k=0}^{n} k \binom{n}{k}
+        \end{equation}
+
+        Zatem:
+        \begin{equation}
+        \boxed{\sum_{k=0}^{n} k \binom{n}{k} = n2^{n-1}}
+        \end{equation}
+        \newline
+        \textbf{Podpunkt 2:}
+
+        Z podpunktu 1 wiemy, że:
+        \begin{equation}
+        n(1+x)^{n-1} = \sum_{k=0}^{n} k \binom{n}{k} x^{k-1}
+        \end{equation}
+
+        Mnożymy obie strony przez $x$:
+        \begin{equation}
+        nx(1+x)^{n-1} = \sum_{k=0}^{n} k \binom{n}{k} x^k
+        \end{equation}
+
+        Różniczkujemy obie strony względem $x$:
+        \begin{equation}
+        \frac{d}{dx}[nx(1+x)^{n-1}] = \frac{d}{dx}\sum_{k=0}^{n} k \binom{n}{k} x^k
+        \end{equation}
+
+        \begin{equation}
+        n(1+x)^{n-1} + nx(n-1)(1+x)^{n-2} = \sum_{k=0}^{n} k^2 \binom{n}{k} x^{k-1}
+        \end{equation}
+
+        Podstawiamy $x = 1$:
+        \begin{equation}
+        n \cdot 2^{n-1} + n(n-1) \cdot 2^{n-2} = \sum_{k=0}^{n} k^2 \binom{n}{k}
+        \end{equation}
+
+        Upraszczamy lewą stronę:
+        \begin{align}
+        n \cdot 2^{n-1} + n(n-1) \cdot 2^{n-2} &= n \cdot 2^{n-2} \cdot 2 + n(n-1) \cdot 2^{n-2} \\
+        &= 2^{n-2}[2n + n(n-1)] \\
+        &= 2^{n-2}[2n + n^2 - n] \\
+        &= 2^{n-2}(n + n^2)
+        \end{align}
+
+        Zatem:
+        \begin{equation}
+        \boxed{\sum_{k=0}^{n} k^2 \binom{n}{k} = (n + n^2)2^{n-2}}
+        \end{equation}
+        \newline
+
+        \textbf{Podpunkt 3:}
+
+        Rozważmy iloczyn dwóch rozwinięć dwumianowych:
+        \begin{equation}
+        (1+x)^m \cdot (1+x)^n = (1+x)^{m+n}
+        \end{equation}
+
+        Lewa strona:
+        \begin{equation}
+        (1+x)^m \cdot (1+x)^n = \left(\sum_{i=0}^{m} \binom{m}{i} x^i\right) \cdot \left(\sum_{j=0}^{n} \binom{n}{j} x^j\right)
+        \end{equation}
+
+        Przy mnożeniu tych sum, współczynnik przy $x^k$ otrzymujemy jako sumę wszystkich iloczynów postaci $\binom{m}{i} \binom{n}{j}$, gdzie $i + j = k$. Oznacza to, że $j = k - i$, więc:
+
+        Współczynnik przy $x^k$ w lewej stronie:
+        \begin{equation}
+        \sum_{i=0}^{k} \binom{m}{i} \binom{n}{k-i}
+        \end{equation}
+
+        Prawa strona:
+        \begin{equation}
+        (1+x)^{m+n} = \sum_{k=0}^{m+n} \binom{m+n}{k} x^k
+        \end{equation}
+
+        Współczynnik przy $x^k$ w prawej stronie to $\binom{m+n}{k}$.
+
+        Porównując współczynniki przy $x^k$ w obu stronach równania:
+        \begin{equation}
+        \boxed{\sum_{i=0}^{k} \binom{m}{i} \binom{n}{k-i} = \binom{m+n}{k}}
+        \end{equation}
     \end{enumerate}
 \end{mdframed}
 
@@ -878,7 +972,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Mateusz Rabantek, Autor 2]
     Triangulacją $n$ -- wierzchołkowego wielokąta wypukłego nazywamy zbiór
     $(n - 3)$ wzajemnie nieprzecinających się jego przekątnych, które dzielą jego obszar na
     $(n - 2)$ trójkątów.
@@ -890,8 +984,30 @@ linewidth=1pt}
 \end{zad}
 \begin{mdframed}
     \begin{enumerate}
-        \item Rozwiązanie Autora 1 podpunktu 1
-        \item Rozwiązanie Autora 1 podpunktu 2
+        %rozwiązanie: Mateusz Rabantek
+        \textbf{Podpunkt 1:}\newline
+        $n+2$ wierzchołków\newline
+        $T_{n+2}$ - triangulacje z krawędzią kończącą się w 1. Weźmy bok 12 - jest on częścią pewnego trójkąta $12i$. Jeśli $T_{n+2}$ = wszystkie triangulacje, 
+        $T_{n+2}^{i}$ = te triangulacje z $T_n+2$, które zawierają trójkąt 12i. Stąd ${T_{n+2}^{i}}$ są parami rozłączne oraz $T_{n+2}$ = $\bigcup_{i=3}^{n+2} T_{n+2}^{i}$
+        \newline
+        Mamy: 
+        \[|T_{n+2}| = 
+        \sum_{i=3}^{n+2} |T_{n+2}^{i}| = \sum_{i=3}^{n+2} \left( |T_{i-1}| \cdot |T_{n+3-i}| \right)
+        \]
+        $|T_2|$ = 1, $|T_3|$ = 1. Otrzymujemy rekurencje dla liczb Catalana z przesuniętymi indeksami.
+        \newline
+        \newline
+        \textbf{Podpunkt 2:}\newline
+        $n$ wierzchołków\newline
+        Wybierzmy bok 12 i zauważmy, że 12 jest częscią pewnego trójkąta 12i.\newline
+        \textbf{i = 3,n:}\newline
+             Zauważmy, że w przypadku $i = 3$, krawędź musi być częscią trójkąta 134 lub 13n. Stąd liczba triangulacji $2^{n-4}$ (analogicznie dla i=n)
+        \newline
+        \textbf{i $\neq$ 3, i $\neq$ n}\newline
+            Wybieramy lewa/prawa strone: $2^{i-4}$ $\cdot$ $2^{n-i-1}$ = $2^{n-5}$\newline
+        \textbf{Wynik:} $2^{n-4}$ + $2^{n-4}$ + $(n-4)$ $\cdot$ $2^{n-5}$ = $n2^{n-5}$
+
+
     \end{enumerate}
 \end{mdframed}
 \begin{mdframed}
@@ -1757,7 +1873,7 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     Rozwiązanie Autora 2.
 \end{mdframed}
 
-\begin{zad}[Konstanty Sobczyński (i-iii), Julian Sowiński (iv-vi), Maciej Wełpa (vii-ix), Autor 2]
+\begin{zad}[Konstanty Sobczyński (i-iii), Julian Sowiński (iv-vi), Maciej Wełpa (vii-ix), Autor 2: Mateusz Rabantek(iv-vi), Mateusz Rabantek(vii-ix)]
     Rozwiąż równania rekurencyjne:
     \begin{enumerate}
         \item $a_0=4, a_1=4, a_{n+2}=a_{n+1}+6a_n$,
@@ -2002,7 +2118,396 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     $$ a_n = 2^{n-1} + 2^{2n-1} $$
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    %rozwiązanie: Mateusz Rabantek
+    \textbf{Rozwiązanie podpunktu (iv)}
+
+    Dane równanie rekurencyjne:
+    \[
+    a_0 = 0, \quad a_1 = 1, \quad a_{n+2} = 2a_{n+1} - a_n.
+    \]
+
+    Funkcja tworząca $G(x)$ dla ciągu $\{a_n\}$ to:
+    \[
+    G(x) = \sum_{n=0}^{\infty} a_n x^n.
+    \]
+
+    Mnożymy równanie rekurencyjne przez $x^{n+2}$ i sumujemy od $n=0$ do nieskończoności:
+    \[
+    \sum_{n=0}^{\infty} a_{n+2} x^{n+2} = 2 \sum_{n=0}^{\infty} a_{n+1} x^{n+2} - \sum_{n=0}^{\infty} a_n x^{n+2}.
+    \]
+
+    Zamieniamy indeksy:
+    \[
+    G(x) - a_0 - a_1 x = 2x (G(x) - a_0) - x^2 G(x).
+    \]
+
+    Podstawiamy wartości początkowe $a_0 = 0$ i $a_1 = 1$:
+    \[
+    G(x) - x = 2x G(x) - x^2 G(x).
+    \]
+
+    Przenosimy wyrażenia:
+    \[
+    G(x) - 2x G(x) + x^2 G(x) = x.
+    \]
+
+    Wyciągamy $G(x)$ przed nawias:
+    \[
+    G(x) (1 - 2x + x^2) = x.
+    \]
+
+    Rozkładamy mianownik:
+    \[
+    1 - 2x + x^2 = (1 - x)^2.
+    \]
+
+    Otrzymujemy:
+    \[
+    G(x) = \frac{x}{(1 - x)^2}.
+    \]
+
+    Wykorzystujemy znane rozwinięcie:
+    \[
+    \frac{1}{(1 - x)^2} = \sum_{n=0}^{\infty} (n+1) x^n.
+    \]
+
+    Mnożymy przez $x$:
+    \[
+    G(x) = x \cdot \frac{1}{(1 - x)^2} = \sum_{n=0}^{\infty} (n+1) x^{n+1} = \sum_{n=1}^{\infty} n x^n.
+    \]
+
+    Porównując współczynniki, otrzymujemy:
+    \[
+    a_n = n \quad \text{dla} \quad n \geq 0.
+    \]
+
+    \textbf{Odpowiedź}
+    \[
+    \boxed{a_n = n}.
+    \]
+
+    \textbf{Rozwiązanie podpunktu (v)}
+
+    Niech $G(x) = \sum_{n=0}^{\infty} a_n x^n$ będzie funkcją tworzącą ciągu $(a_n)$.
+
+    Wyprowadzenie równania funkcyjnego
+
+    Z relacji rekurencyjnej $a_{n+2} = a_{n+1} - a_n$ dla $n \geq 0$ mamy:
+    \[
+    \sum_{n=0}^{\infty} a_{n+2} x^n = \sum_{n=0}^{\infty} a_{n+1} x^n - \sum_{n=0}^{\infty} a_n x^n
+    \]
+    Przekształcenie sum
+
+    Lewa strona:
+    \begin{align}
+    \sum_{n=0}^{\infty} a_{n+2} x^n &= \frac{1}{x^2} \sum_{n=0}^{\infty} a_{n+2} x^{n+2} \\
+    &= \frac{1}{x^2} \sum_{k=2}^{\infty} a_k x^k \\
+    &= \frac{1}{x^2}(G(x) - a_0 - a_1 x)
+    \end{align}
+
+    Prawa strona:
+    \begin{align}
+    \sum_{n=0}^{\infty} a_{n+1} x^n - \sum_{n=0}^{\infty} a_n x^n &= \frac{1}{x}\sum_{n=0}^{\infty} a_{n+1} x^{n+1} - G(x) \\
+    &= \frac{1}{x}(G(x) - a_0) - G(x)
+    \end{align}
+
+    Podstawienie warunków początkowych
+
+    Podstawiając $a_0 = 0$ i $a_1 = 1$:
+    \[
+    \frac{G(x) - x}{x^2} = \frac{G(x)}{x} - G(x)
+    \]
+    Rozwiązanie równania funkcyjnego
+
+    Mnożąc przez $x^2$:
+    \begin{align}
+    G(x) - x &= xG(x) - x^2G(x) \\
+    G(x) - x &= G(x)(x - x^2) \\
+    G(x) - G(x)(x - x^2) &= x \\
+    G(x)(1 - x + x^2) &= x
+    \end{align}
+
+    Stąd:
+    \boxed{G(x) = \frac{x}{1 - x + x^2}}
+
+
+    Analiza mianownika
+
+    Mianownik $1 - x + x^2 = 0$ ma pierwiastki:
+    \[
+    x = \frac{1 \pm \sqrt{1-4}}{2} = \frac{1 \pm i\sqrt{3}}{2}
+    \]
+    Oznaczmy $\omega = e^{i\pi/3} = \frac{1 + i\sqrt{3}}{2}$ i $\omega^2 = e^{-i\pi/3} = \frac{1 - i\sqrt{3}}{2}$.
+
+    Są to pierwiastki trzeciego stopnia z jedności różne od 1, więc:
+    \begin{align}
+    \omega^3 &= 1 \\
+    1 + \omega + \omega^2 &= 0 \\
+    1 - x + x^2 &= (1 - \omega x)(1 - \omega^2 x)
+    \end{align}
+
+    Rozwinięcie w szereg
+
+    Korzystając z analizy pierwiastków i właściwości funkcji okresowych, otrzymujemy:
+
+    \[
+    a_n = \begin{cases}
+    0 & \text{gdy } n \equiv 0 \pmod{6} \\
+    1 & \text{gdy } n \equiv 1 \pmod{6} \\
+    1 & \text{gdy } n \equiv 2 \pmod{6} \\
+    0 & \text{gdy } n \equiv 3 \pmod{6} \\
+    -1 & \text{gdy } n \equiv 4 \pmod{6} \\
+    -1 & \text{gdy } n \equiv 5 \pmod{6}
+    \end{cases}
+    \]
+
+
+    \textbf{Rozwiązanie podpunktu (vi)}
+
+    Dane równanie rekurencyjne:
+    \[
+    a_0 = 1,\quad a_1 = 5,\quad a_2 = 11,\quad a_{n+3} = 3a_{n+2} + 2a_{n+1} - 2a_n \quad \text{dla } n \geq 0.
+    \]
+
+    Definiujemy funkcję tworzącą:
+    \[
+    A(x) = \sum_{n=0}^{\infty} a_n x^n.
+    \]
+
+    Zastosowanie rekurencji
+    \begin{align*}
+    A(x) &= 1 + 5x + 11x^2 + \sum_{n=3}^{\infty} (3a_{n-1} + 2a_{n-2} - 2a_{n-3}) x^n \\
+    &= 1 + 5x + 11x^2 + 3x(A(x) - 1 - 5x) + 2x^2(A(x) - 1) - 2x^3 A(x)
+    \end{align*}
+
+    Rozwiązanie dla $A(x)$
+    \begin{align*}
+    A(x) &= \frac{1 + 2x - 6x^2}{1 - 3x - 2x^2 + 2x^3} \\
+    &= \frac{1 + 2x - 6x^2}{(1 + x)(1 - (2 + \sqrt{2})x)(1 - (2 - \sqrt{2})x)}
+    \end{align*}
+
+    Rozkład na ułamki proste
+    \[
+    A(x) = \frac{-1}{1 + x} + \frac{1}{1 - (2 + \sqrt{2})x} + \frac{1}{1 - (2 - \sqrt{2})x}
+    \]
+
+    Rozwinięcie w szereg
+    \begin{align*}
+    A(x) &= -\sum_{n=0}^{\infty} (-1)^n x^n + \sum_{n=0}^{\infty} (2 + \sqrt{2})^n x^n + \sum_{n=0}^{\infty} (2 - \sqrt{2})^n x^n \\
+    &= \sum_{n=0}^{\infty} \left[ -(-1)^n + (2 + \sqrt{2})^n + (2 - \sqrt{2})^n \right] x^n
+    \end{align*}
+
+    \textbf{Odpowiedź}
+    \[
+    \boxed{a_n = (-1)^{n+1} + (2 + \sqrt{2})^n + (2 - \sqrt{2})^n}
+    \]
+
+
+    \textbf{Rozwiązanie podpunktu (vii)}
+    \begin{align*}
+    a_0 &= 1, \\
+    a_1 &= 1, \\
+    a_{n+2} &= a_{n+1} + 2a_n + (-1)^n \quad \text{dla} \quad n \geq 0
+    \end{align*}
+
+    Definicja funkcji tworzącej
+    Niech funkcja tworząca ciągu $\{a_n\}$ będzie dana wzorem:
+    \[ G(x) = \sum_{n=0}^\infty a_n x^n \]
+        
+    Zastosowanie równania rekurencyjnego
+    Mnożymy równanie przez $x^{n+2}$ i sumujemy:
+    \[ \sum_{n=0}^\infty a_{n+2} x^{n+2} = \sum_{n=0}^\infty a_{n+1} x^{n+2} + 2 \sum_{n=0}^\infty a_n x^{n+2} + \sum_{n=0}^\infty (-1)^n x^{n+2} \]
+        
+    Wyrażamy sumy przez $G(x)$:
+    \[ G(x) - a_0 - a_1 x = x(G(x) - a_0) + 2x^2 G(x) + x^2 \sum_{n=0}^\infty (-x)^n \]
+        
+    Obliczenie sumy szeregu geometrycznego
+    \[ \sum_{n=0}^\infty (-x)^n = \frac{1}{1 + x} \quad \text{dla} \quad |x| < 1 \]
+        
+    Podstawiamy wartości początkowe:
+    \[ G(x) - 1 - x = x(G(x) - 1) + 2x^2 G(x) + \frac{x^2}{1 + x} \]
+        
+    Rozwiązanie równania dla $G(x)$
+    \begin{align*}
+    G(x) - x G(x) - 2x^2 G(x) &= 1 + x - x + \frac{x^2}{1 + x} \\
+    G(x)(1 - x - 2x^2) &= 1 + \frac{x^2}{1 + x} \\
+    G(x) &= \frac{1 + \frac{x^2}{1 + x}}{1 - x - 2x^2} = \frac{1 + x + x^2}{(1 + x)(1 - x - 2x^2)}
+    \end{align*}
+        
+    Rozkład mianownika
+    \[ 1 - x - 2x^2 = (1 + x)(1 - 2x) \]
+    Zatem:
+    \[ G(x) = \frac{1 + x + x^2}{(1 + x)^2 (1 - 2x)} \]
+        
+    Rozkład na ułamki proste
+    \[ \frac{1 + x + x^2}{(1 + x)^2 (1 - 2x)} = \frac{A}{1 + x} + \frac{B}{(1 + x)^2} + \frac{C}{1 - 2x} \]
+        
+    Rozwiązujemy:
+    \begin{align*}
+    1 + x + x^2 &= A(1 + x)(1 - 2x) + B(1 - 2x) + C(1 + x)^2 \\
+    \text{Dla } x = -1 &: 1 = 3B \Rightarrow B = \frac{1}{3} \\
+    \text{Dla } x = \frac{1}{2} &: \frac{7}{4} = \frac{9}{4}C \Rightarrow C = \frac{7}{9} \\
+    \text{Dla } x = 0 &: 1 = A + B + C \Rightarrow A = -\frac{1}{9}
+    \end{align*}
+        
+    Rozwinięcie w szereg
+    \begin{align*}
+    G(x) &= -\frac{1}{9}\cdot\frac{1}{1 + x} + \frac{1}{3}\cdot\frac{1}{(1 + x)^2} + \frac{7}{9}\cdot\frac{1}{1 - 2x} \\
+    &= -\frac{1}{9} \sum_{n=0}^\infty (-1)^n x^n + \frac{1}{3} \sum_{n=0}^\infty (n+1)(-1)^n x^n + \frac{7}{9} \sum_{n=0}^\infty 2^n x^n
+    \end{align*}
+        
+    Wyznaczenie wzoru na $a_n$
+    \[ a_n = -\frac{1}{9}(-1)^n + \frac{1}{3}(n+1)(-1)^n + \frac{7}{9}2^n \]
+    \[ a_n = (-1)^n\left(\frac{n+1}{3} - \frac{1}{9}\right) + \frac{7}{9}2^n = \frac{(-1)^n(3n + 2) + 7\cdot 2^n}{9} \]
+
+    \textbf{Odpowiedź}
+    \[ \boxed{a_n = \frac{(-1)^n (3n + 2) + 7 \cdot 2^n}{9}} \]
+
+    \textbf{Rozwiązanie podpunktu (viii)}
+    Dane równanie rekurencyjne:
+    \[
+    a_{0} = 1, \quad a_{1} = 1, \quad a_{n+2} = a_{n+1} + 6a_{n} - n
+    \]
+
+    Funkcja tworząca $A(x)$ dla ciągu $\{a_n\}$ to:
+    \[
+    A(x) = \sum_{n=0}^{\infty} a_n x^n
+    \]
+
+    Mnożymy równanie przez $x^{n}$ i sumujemy od $n=0$ do $\infty$:
+    \[
+    \sum_{n=0}^{\infty} a_{n+2} x^n = \sum_{n=0}^{\infty} a_{n+1} x^n + 6 \sum_{n=0}^{\infty} a_n x^n - \sum_{n=0}^{\infty} n x^n
+    \]
+
+    \[
+    \frac{A(x) - a_0 - a_1 x}{x^2} = \frac{A(x) - a_0}{x} + 6 A(x) - \frac{x}{(1-x)^2}
+    \]
+
+    Podstawiamy $a_0 = 1$ i $a_1 = 1$:
+    \[
+    \frac{A(x) - 1 - x}{x^2} = \frac{A(x) - 1}{x} + 6 A(x) - \frac{x}{(1-x)^2}
+    \]
+
+    Po przekształceniach otrzymujemy:
+    \[
+    A(x) = \frac{1}{(1 - x - 6 x^2)} - \frac{x^3}{(1-x)^2 (1 - x - 6 x^2)}
+    \]
+
+    Rozkładamy mianowniki:
+    \[
+    1 - x - 6 x^2 = (1 - 3x)(1 + 2x)
+    \]
+    Następnie rozkładamy oba składniki na ułamki proste.
+
+    Po rozkładzie i rozwinięciu w szereg otrzymujemy rozwiązanie:
+
+    \[
+    a_n = -\frac{39}{20} \cdot 3^n + \frac{17}{45} \cdot (-2)^n - \frac{6n + 7}{36}
+    \]
+
+    \textbf{Odpowiedź}
+    \[
+    \boxed{a_n = -\frac{39}{20} \cdot 3^n + \frac{17}{45} \cdot (-2)^n - \frac{n}{6} - \frac{7}{36}}
+    \]
+
+
+    \textbf{Rozwiązanie podpunktu (ix)}
+    \begin{align}
+    a_0 &= 1 \\
+    a_1 &= 1 \\
+    a_{n+1} &= 2a_n + 4^n \quad \text{dla } n \geq 0
+    \end{align}
+    Niech $A(x) = \sum_{n=0}^{\infty} a_n x^n$ będzie funkcją tworzącą ciągu $(a_n)$.
+        
+    Z równania $a_{n+1} = 2a_n + 4^n$ dla $n \geq 0$ otrzymujemy:
+    \begin{equation}
+    \sum_{n=0}^{\infty} a_{n+1} x^n = 2\sum_{n=0}^{\infty} a_n x^n + \sum_{n=0}^{\infty} 4^n x^n
+    \end{equation}
+        
+    Lewa strona:
+    \begin{align}
+    \sum_{n=0}^{\infty} a_{n+1} x^n &= \sum_{n=1}^{\infty} a_n x^{n-1} \\
+    &= \frac{1}{x}\sum_{n=1}^{\infty} a_n x^n \\
+    &= \frac{1}{x}(A(x) - a_0) \\
+    &= \frac{A(x) - 1}{x}
+    \end{align}
+        
+    Prawa strona:
+    \begin{align}
+    2\sum_{n=0}^{\infty} a_n x^n + \sum_{n=0}^{\infty} 4^n x^n &= 2A(x) + \sum_{n=0}^{\infty} (4x)^n \\
+    &= 2A(x) + \frac{1}{1-4x}
+    \end{align}
+        
+    Równanie funkcjonalne
+    \begin{equation}
+    \frac{A(x) - 1}{x} = 2A(x) + \frac{1}{1-4x}
+    \end{equation}
+        
+    Mnożąc przez $x$:
+    \begin{equation}
+    A(x) - 1 = 2xA(x) + \frac{x}{1-4x}
+    \end{equation}
+        
+    \begin{align}
+    A(x) - 2xA(x) &= 1 + \frac{x}{1-4x} \\
+    A(x)(1 - 2x) &= 1 + \frac{x}{1-4x} \\
+    A(x) &= \frac{1 + \frac{x}{1-4x}}{1-2x}
+    \end{align}
+        
+    Upraszczając:
+    \begin{align}
+    A(x) &= \frac{1}{1-2x} + \frac{x}{(1-4x)(1-2x)}
+    \end{align}
+        
+    Rozkład na ułamki proste
+    \begin{equation}
+    \frac{x}{(1-4x)(1-2x)} = \frac{A}{1-4x} + \frac{B}{1-2x}
+    \end{equation}
+        
+    Mamy:
+    \begin{equation}
+    x = A(1-2x) + B(1-4x)
+    \end{equation}
+        
+    Podstawiając $x = \frac{1}{4}$:
+    \begin{equation}
+    \frac{1}{4} = A\left(1-\frac{1}{2}\right) = \frac{A}{2} \Rightarrow A = \frac{1}{2}
+    \end{equation}
+        
+    Podstawiając $x = \frac{1}{2}$:
+    \begin{equation}
+    \frac{1}{2} = B(1-2) = -B \Rightarrow B = -\frac{1}{2}
+    \end{equation}
+        
+    Zatem:
+    \begin{equation}
+    \frac{x}{(1-4x)(1-2x)} = \frac{1/2}{1-4x} - \frac{1/2}{1-2x}
+    \end{equation}
+        
+    Funkcja tworząca w postaci końcowej
+    \begin{align}
+    A(x) &= \frac{1}{1-2x} + \frac{1/2}{1-4x} - \frac{1/2}{1-2x} \\
+    &= \frac{1/2}{1-2x} + \frac{1/2}{1-4x} \\
+    &= \frac{1}{2} \cdot \frac{1}{1-2x} + \frac{1}{2} \cdot \frac{1}{1-4x}
+    \end{align}
+
+    \begin{align}
+    \frac{1}{1-2x} &= \sum_{n=0}^{\infty} (2x)^n = \sum_{n=0}^{\infty} 2^n x^n \\
+    \frac{1}{1-4x} &= \sum_{n=0}^{\infty} (4x)^n = \sum_{n=0}^{\infty} 4^n x^n
+    \end{align}
+        
+    Zatem:
+    \begin{align}
+    A(x) &= \frac{1}{2}\sum_{n=0}^{\infty} 2^n x^n + \frac{1}{2}\sum_{n=0}^{\infty} 4^n x^n \\
+    &= \sum_{n=0}^{\infty} \left(\frac{2^n}{2} + \frac{4^n}{2}\right) x^n \\
+    &= \sum_{n=0}^{\infty} \frac{2^n + 4^n}{2} x^n
+    \end{align}
+        
+    \textbf{Odpowiedź}
+    \begin{equation}
+    \boxed{a_n = \frac{2^n + 4^n}{2}}
+    \end{equation}
+    
 \end{mdframed}
 
 \begin{zad}[Karol Wójcik, Autor 2]
@@ -2221,7 +2726,7 @@ Sytuacja taka sama jak w 7 zestawie.
 \newpage
 \section{Zestaw 11}          % Zestaw 11
 
-\begin{zad}
+\begin{zad}[Autor 1, Mateusz Rabantek]
     Wykaż równoważność następujących zdań: dla grafu $T$
     \begin{enumerate}
         \item $T$ jest drzewem;
@@ -2233,7 +2738,31 @@ Sytuacja taka sama jak w 7 zestawie.
     Rozwiązanie Autora 1.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    %rozwiązanie: Mateusz Rabantek
+    \textbf{1 $\Leftrightarrow$ 2}
+    \item 1 $\Rightarrow$ 2 
+    \item Załóżmy, że $T$ jest drzewem (jest spójny i acykliczny) i, że istnieją wierzchołki u i v połączone dwoma rożnymi ścieżkami. Otrzymujemy wtedy cykl w $T$. Sprzeczność \qedsymbol
+    \item 1 $\Leftarrow$ 2
+    \item Załóżmy, że w $T$ między każdymi dwoma wierzchołkami istnieje dokładnie jedna ścieżka (T jest spójny). Załóżmy, że w T istnieje cykl przechodzący przez wierzchołki 
+            u, w i v. W tym cyklu u i v połączone są dwoma różnymi ścieżkami, jedna przechodzi przez w, druga nie. Sprzeczność.
+            \qedsymbol
+    \newline
+    \newline
+    \textbf{1 $\Leftrightarrow$ 3}
+    \item 1 $\Rightarrow$ 3
+    \item Załóżmy, że $T$ - drzewo i po usunięciu krawędzi $e$ o końcach $u$ i $v$ nadal jest spójny.
+        Zatem między u i v istnieje ścieżka $S$ w grafie $T-e$. Stąd wynika, że $S$ i $e$ tworzą cykl w $T$. Sprzeczność. \qedsymbol
+    \item 1 $\Leftarrow$ 3
+    \item Załóżmy, że $T$ - graf minimalnie spójny (tj. po usunięciu dowolnej krawędzi zwiększa się liczba składowych T).
+        Załóżmy, że $T$ - cykliczny, po usunięciu krawędzi z cyklu w $T$ liczba składowych się nie zwiększy. Sprzeczność.
+        \qedsymbol
+    \newline
+    \newline
+    \textbf{1 $\Leftrightarrow$ 4}
+    \item 1 $\Rightarrow$ 4
+    \item Załóżmy, że $T$ - drzewo i po połączeniu dowolnych dwóch wierzchołków $u$ i $v$ nie utworzymy cyklu. Oznacza to, że w grafie $T$ te wierzchołki nie były połączone ścieżką. Sprzeczność. \qedsymbol
+    \item 1 $\Leftarrow$ 4
+    \item Załóżmy, że $T$ - graf maksymalnie acykliczny. Załóżmy, że $T$ nie jest spójny. Wybierzmy dwa wierzchołki $u$ i $v$ nie połączone krawędzią. Wtedy po połączeniu tych wierzchołków krawędzią $e$ nie otrzymujemy cyklu. Sprzeczność. \qedsymbol
 \end{mdframed}
 
 
