@@ -1422,7 +1422,7 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $I$ będzie rodziną $n$ przedziałów osi rzeczywistej.
     Wykaż, że $I$ zawiera co najmniej $\sqrt{n}$ przedziałów
     parami rozłącznych lub $I$ zawiera co najmniej $\sqrt{n}$
@@ -1432,6 +1432,47 @@ linewidth=1pt}
     dla dowolnych $A, B \in \mathcal{F}$ mamy $A \cap B \neq \emptyset$
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Zdefiniujmy relację
+    \[ X \preceq Y \; \Leftrightarrow \; \forall(x\in X,y\in Y)(x<y) \; \vee \; X = Y \]
+    gdzie $X$ i $Y$ - przedziały.
+
+    Relacja $\preceq$ jest relacją częściowego porządku, ponieważ:
+    \begin{enumerate}
+        \item jest zwrotna ($X = Y \Rightarrow X \preceq Y$)
+        \item jest antysymetryczna
+        \[
+        X \neq Y \wedge X \preceq Y \Rightarrow \forall(x\in X,y\in Y)(x<y) \Rightarrow 
+        \]
+        \[
+        \Rightarrow \neg \exists(x \in X, y \in Y)(x > y) \Rightarrow Y \npreceq X
+        \]
+        \item jest przechodnia\
+        \[
+        X \preceq Y \wedge Y \preceq Z \Rightarrow 
+        \]\[
+        \Rightarrow (\forall(x\in X,y\in Y)(x<y) \; \vee \; X = Y) \wedge 
+        (\forall(y\in Y,z\in Z)(y<z) \; \vee \; Y = Z) \Rightarrow
+        \]\[
+        \Rightarrow (\forall(x\in X, z \in Z)(x<z) \vee X = Z) \Rightarrow 
+        \]\[
+        \Rightarrow X \preceq Z
+        \]
+    \end{enumerate}
+    Zatem $P := (I, \preceq)$ jest posetem. Z lematu udowodnionego na wykładzie wiemy, że: 
+
+    \[height(P) \cdot width(P) \geq |I| = n\]
+
+    Zatem:
+
+    \[
+    height(P) \geq \sqrt{n} \;\vee \;width(P) \geq \sqrt{n}
+    \]
+
+    Przy czym $height(P)$ to długość najdłuższego łańcucha, w tym przypadku liczność największego podzbioru $I$ takiego, 
+    że przedziały do niego należące są parami rozłączne, a $width(P)$ to długość najdłuższego antyłańcucha, 
+    tutaj będzie to liczność największego takiego podzbioru $I$, że każde dwa przedziały do niego należące mają wspólny punkt, 
+    czyli przecięcie po wszyskich przedziałach należących do tego podzbioru nie jest zbiorem pustym.
 
 \end{mdframed}
 \begin{mdframed}
@@ -1439,13 +1480,18 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $\mathcal{F}$ będzie maksymalną przecinającą się rodziną podzbiorów $[n]$.
     Wykaż, że:
     \[ |\mathcal{F}| = 2^{n-1} \]
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Weźmy $A \subset [n]$. Zauważmy, że $A \cap ([n] - A) = \emptyset$. 
+    Zatem tylko jeden z tych zbiorów może należeć do $\mathcal{F}$, czyli $|\mathcal{F}| \leq 2^{n-1}$.
 
+    Zauważmy, że rodzina zbiorów $\{A \subset [n] : n \in A\}$ spełnia warunek zadania, zatem $|\mathcal{F}| \geq 2^{n-1}$. 
+    Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
 
@@ -1453,12 +1499,17 @@ linewidth=1pt}
 
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $\mathcal{F}$ będzie maksymalną rodziną podzbiorów zbioru $[n]$ taką,
     że dla dowolnych $A, B \in \mathcal{F}$ mamy $A \cup B \neq [n]$. Wyznacz $|\mathcal{F}|$.
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Weźmy $A \subset [n]$. Zauważmy, że istnieje dokładnie jeden zbiór $B$ taki, że $B \subset [n] \wedge A \cap B = [n]$. 
+    Zatem tylko jeden z tych zbiorów może należeć do $\mathcal{F}$, czyli $|\mathcal{F}| \leq 2^{n-1}$.
 
+    Zauważmy, że rodzina wszystkich podzbiorów $[n-1]$ spełnia warunek z zadania, zatem $|\mathcal{F}| \geq 2^{n-1}$. 
+    Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
 
