@@ -2469,7 +2469,25 @@ Sytuacja taka sama jak w 7 zestawie.
     Wykaż, że dla każdego grafu $G$ zachodzi: $G$ jest spójny lub $\bar{G}$ (dopełnienie $G$) jest spójny.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+     % Rozwiązanie: Bartosz Wójcik
+
+     (1) Załóżmy, że graf $G$ jest niespójny. Wtedy $G$ można podzielić na 
+     składowe, $G_1$ i $G_2$ takie, że dla każdego $v \in G_1$ i $u \in G_2$ 
+     nie istnieje ścieżka od $u$ do $v$. Udowodnimy, że graf $\overline{G}$ jest 
+     spójny. Weźmy dowolne dwa $u, v \in G$. 
+     
+         Jeśli $u \in G_1$, a $v \in G_2$ to 
+     z założenia nie istnieje krawędź $uv$ w $G$, więc istnieje krawędź (ścieżka) w 
+     $\overline{G}$. 
+     
+         W przypadku gdy $u, v \in G_1$ weźmy $w \in G_2$. Według poprzedniego 
+     argumentu istnieje krawędź $uw$ i $wv$ w $\overline{G}$, a więc ścieżka $uwv$. 
+     
+         Pozostałe przypadki wynikają z symetrii oznaczeń. Udowdniliśmy, że dla każdego 
+     $u, v \in \overline{G}$ istniej ścieżka łączaca $u$ i $v$, więc graf $\overline{G}$ 
+     jest spójny.
+ 
+     (2) Jeśli $G$ jest spójny to teza spełniona.
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -2499,8 +2517,24 @@ Sytuacja taka sama jak w 7 zestawie.
 
 
 
-% \section{Zestaw}          % Zestaw 12
-% Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 12
+\begin{zad} [Bartosz Wójcik]
+    Niech $G = (V, E, w)$ będzie ważonym grafem o funkcji wag $w: E \rightarrow \R^+$.
+    Wykaż, że jeśli $w(e_1) \neq w(e_2)$ dla każdych dwóch krawędzi $e_1$ oraz $e_2$, to 
+    minimalne drzewo rozpinające w $G$ jest wyznaczone jednoznacznie.
+\end{zad}
+\begin{mdframed}
+    % Rozwiązanie: Bartosz Wójcik, zadanie 6
+    Załóżmy, że teza nie jest spełniona i istnieją dwa minimalne drzewa rozpinające $T_1$ i 
+    $T_2$. Jeśli drzewa $T_1$ i $T_2$ są różne to grafy te różnią się krawędziami. Weźmy krawędź 
+    $e_1$, która leży tylko w jednym z grafów (załóżmy, że w $T_1$). Dodajmy $e_1$ do $T_2$. W $T_2 + e_1$ 
+     istnieje teraz cykl (bo $T_2$ to drzewo), w którym jest krawędź $e_2$, która nie należy do $T_1$. Po usunięciu 
+     $e_2$ z $T_2 + e_1$ $T_2$ ma mniejszą sumę wag (bo $w(e_1) < w(e_2)$) oraz jest drzewem rozpinającym. Jest to sprzeczne 
+     z załóżeniami, że $T_2$ było minimalnym drzewm rozpinającym.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 % \section{Zestaw}          % Zestaw 13
 % Nothing here. Tylko work in progress...
 
