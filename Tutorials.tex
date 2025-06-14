@@ -2172,7 +2172,33 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     \[\sum_{k=0}^{n}F_k\cdot F_{n-k}\]
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Karol Wójcik
+    Funkcja generująca liczb Fibonacciego to:
+\[
+F(z) = \frac{1}{\sqrt{5}} \left( \frac{1}{1 - \phi z} - \frac{1}{1 - \hat{\phi} z} \right),
+\]
+gdzie \( \phi = \frac{1 + \sqrt{5}}{2} \), \( \hat{\phi} = \frac{1 - \sqrt{5}}{2} \).
+
+Ponieważ splot odpowiada mnożeniu funkcji generujących, interesuje nas współczynnik przy \( z^n \) w \( F(z)^2 \):
+\[
+F(z)^2 = \left( \frac{1}{\sqrt{5}} \left( \frac{1}{1 - \phi z} - \frac{1}{1 - \hat{\phi} z} \right) \right)^2 = \frac{1}{5} \left( \frac{1}{(1 - \phi z)^2} + \frac{1}{(1 - \hat{\phi} z)^2} - \frac{2}{(1 - \phi z)(1 - \hat{\phi} z)} \right)
+\]
+
+Z rozwinięć:
+\[
+\frac{1}{(1 - az)^2} = \sum_{n=0}^\infty (n + 1) a^n z^n, \quad \frac{1}{(1 - \phi z)(1 - \hat{\phi} z)} = \sum_{n=0}^\infty F_{n+1} z^n
+\]
+
+otrzymujemy:
+\[
+F(z)^2 = \sum_{n=0}^\infty \left( \frac{1}{5} \left[ (n+1)(\phi^n + \hat{\phi}^n) - 2F_{n+1} \right] \right) z^n
+\]
+
+Zatem współczynnik przy \( z^n \) to:
+\[
+\sum_{k=0}^{n} F_k F_{n-k} = \frac{2n F_{n+1} - (n+1) F_n}{5}
+\]
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -2417,11 +2443,28 @@ Sytuacja taka sama jak w 7 zestawie.
 \end{mdframed}
 
 
-\begin{zad}
+\begin{zad}[Karol Wójcik, Autor 2]
     Udowodnij, że dowolne drzewo $T$ ma przynajmniej $\Delta(T)$ liści.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Karol Wójcik
+    Niech $l$ - liczba liści w drzewie t
+    \newline\newline
+    Niech T będzie drzewem o $n$ wierzchołkach, wtedy liczba krawędzi to $n-1$
+    \newline\newline
+    Z HSL:
+    \[
+    \sum deg(v) = 2(n-l-1) + l + \Delta(T)
+    \]
+    \[
+    2(n-1) \geqslant l + 2(n-l-1) + \Delta(T)
+    \]
+    \[
+    2n-2 \geqslant l + 2n - 2 -2l + \Delta(T)
+    \]
+    \[
+    l \geqslant \Delta(T)
+    \]
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -2541,7 +2584,25 @@ Sytuacja taka sama jak w 7 zestawie.
      (2) Jeśli $G$ jest spójny to teza spełniona.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    % Rozwiązanie: Karol Wójcik
+    Załóżmy, że $G$ jest niespójny.
+    Oznacza to, że:
+    $G = G_1 + G_2$
+    \newline
+    Udowodnię, że $\overline{G}$ jest spójny \\
+
+    Weźmy x,y $\in V(\overline{G}) $\\
+    Mamy dwa przypadki:
+    \newline
+    1. $x \in V(G_1)  y \in V(G_2)$
+    \newline
+    Wtedy xy jest krawędzią w $\overline{G}$
+    \newline\newline
+    2. $x$,$y$ $\in V(G_1) ($analogicznie gdy $ x,y \in V(G_2))$
+    Zauważmy, że \( \exists z \in V(G_2) \).\\
+Stąd \( xzy \) jest ścieżką w \( \overline{G} \).
+\newline\newline
+Z powyższych przypadków wynika, że $\overline{G}$ jest spójny
 \end{mdframed}
 
 
