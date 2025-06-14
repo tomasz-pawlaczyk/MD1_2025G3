@@ -244,14 +244,25 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Karol Sęk, Autor 2]
     Przy okrągłym stole jest $n$ miejsc oznaczonych proporczykami różnych
     państw. Ambasadorowie tych państw usiedli przy tym stole tak, że żaden z nich nie siadł
     przy właściwym proporczyku. Wykaż, że można tak obrócić stołem, że co najmniej 2
     ambasadorów znajdzie się przed proporczykiem swojego państwa.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    Rozważmy permutację $f:[n] \rightarrow [n]$ , taką że $\forall_{\small k\in[n]} f(k) \ne k$.\\
+    Funkcja $f$ reprezentuje przyporządkowanie ambasadorów do proporczyków.\\
+    Rozważmy permutacje $g:[n] \rightarrow [n]$ o wzorze $(12345...(n-1)n)$.\\
+    Niech $i \in \N$, $f_i = f \circ g \circ g ... \circ g$ (złożenie f z g $i$ razy);\\
+    Zauważmy, że $\forall_{\small k\in[n]}$ $\exists_{\small i\in[n]}$ $ f_i(k) = k$.\\
+    W kontekście treści zadania, oznacza to, że dla każdego ambasadora istnieje obrót o $i$ miejsc, taki, że
+    ten ambasador siedzi przy własciwym proporczyku. \\
+    Zauważmy, że $f_n = f$ $f_{n+1} = f_1$ $f_{n+2} = f_2$ ...\\
+    Oznacza to, że istnieje dokładnie tylko $n-1$ różnych funkcji $f_i$.\\
+    Jeżeli przyporządkujemy każdej liczbie $k \in [n]$  liczbę $i \in [n-1]$ , taką, że $f_i(k) =k$, to na mocy \dots\\
+    zasady Dirichleta będą istnieć dwie liczby z takim samym przyporządkowanym $i$.\\
+     $\blacksquare$
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -552,17 +563,34 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Karol Sęk, Autor 2]
     Posługując się interpretacją kombinatoryczną udowodnij, że:
     \[ \sum_{i=0}^{k} \binom{n}{i} \binom{n-i}{k-i} = 2^k \binom{n}{k} \]
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    Niech $n \in \N , k \in \N$. \\
+    Rozważmy zbiór:
+    $$P=\{(x,y) \in P_k([n]) \times P([n]) \space|\space y \subseteq x \}.$$
+    Oczywiście $|P| = \binom{n}{k}2^k =2^k\binom{n}{k}$. \\
+
+    Niech $i \in [k] \cup \{0\}$.\\
+    Rozważmy rodzinę zbiorów $L_i = \{(x,y) \in P \space| \space |y| = i\}$. \\
+    Zauważmy, że ta rodzina tworzy rozłączne pokrycie P.\\
+    Oznacza to, że $\bigcup_{\small i \in [k]} \space L_i = P$\\
+
+    Chcemy policzyć $|L_i|$.\\
+    Drugi element pary uporządkowanej $L_i$ "$y$" jest podzbiorem $i$ elementowym $[n]$ $\implies \binom{n}{i}$.\\
+    Pierwszy element pary uporządkowanej $L_i$ "$x$" musi zawierać $y$ i być mocy $k$.\\
+    Należy więc z pozostałych $n-i$ elementów wybrać $k-i$ elementów $\implies \binom{n-i}{k-i}$.\\
+
+    Ostatecznie $|L_i| =  \binom{n}{i} \binom{n-i}{k-i}$.\\
+    $|\bigcup_{\small i \in [k]} \space L_i | = \sum_{i=0}^{k}\binom{n}{i} \binom{n-i}{k-i}$\\
+    $\bigcup_{\small i \in [k]} \space L_i = P \implies \sum_{i=0}^{k}\binom{n}{i} \binom{n-i}{k-i} = 2^k\binom{n}{k}$\\
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
 \end{mdframed}
-
 
 
 
@@ -1304,7 +1332,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Autor 1, Autor 2]
+\begin{zad}[Karol Sęk, Autor 2]
     Wykaż, że mamy
     \[
         \sum_{j=0}^{m}(-1)^j \binom{m}{j}(m-j)^n
@@ -1312,7 +1340,33 @@ linewidth=1pt}
     suriekcji ze zbioru $[n]$ w zbiór $[m]$.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    Niech $X = \{f \in [m]^{[n]}| \forall_{i \in [m]} \exists_{j \in [n]} f(j) = i\}$\\
+    Niech $U = [m]^{[n]}$\\
+    Niech $i \in [m]$ oraz $X_i = \{f \in [m]^{[n]}| \exists_{j \in [n]} f(j) = i\}$\\
+    Zauważmy, że $\bigcap_{i = 1}^{m} X_i = X$\\
+
+    Korzystając z zasady włączeń i wyłączeń:\\
+
+    $$|\bigcap_{i = 1}^{m} X_i| = \sum_{I \subseteq [n]} (-1)^{|I|} |\bigcap_{i \in I} (U \setminus X_i)|$$\\
+
+    Zauważmy, że\\
+    $$|U \setminus X_i| = (m-1)^{n}$$\\
+    $U \setminus X_i$ jest zbiorem wszystkich funkcji z $[n]$ do $[m]$ takich, że wartość $i \in [m]$ jest nieosiągalna \dots\\
+    jest to więc zbiór wszystkich funkcji gdzie przeciwdziedzina jest mniejsza o jeden element.\\
+
+    Analogicznie\\
+    $$|\bigcap_{i \in I} (U \setminus X_i)| = (m-[I])^n$$\\
+
+    Podstawiając do wzoru:\\
+    $$\sum_{I \subseteq [n]} (-1)^{|I|} |\bigcap_{i \in I} (U \setminus X_i)| =\sum_{I \subseteq [n]} (-1)^{|I|} (m-[I])^n$$\\
+
+    Zauważmy, że we wzorze znaczenie ma tylko moc I, możemy go więc uprościć w zależności od $|I|$\\
+
+    $$|\bigcap_{i = 1}^{m} X_i| = \sum_{j=0}^{m}(-1)^j \binom{m}{j}(m-j)^n$$\\
+    $$|\bigcap_{i = 1}^{m} X_i| = |X|$$\\
+
+    $\blacksquare$\\
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -1484,7 +1538,7 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $I$ będzie rodziną $n$ przedziałów osi rzeczywistej.
     Wykaż, że $I$ zawiera co najmniej $\sqrt{n}$ przedziałów
     parami rozłącznych lub $I$ zawiera co najmniej $\sqrt{n}$
@@ -1494,6 +1548,47 @@ linewidth=1pt}
     dla dowolnych $A, B \in \mathcal{F}$ mamy $A \cap B \neq \emptyset$
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Zdefiniujmy relację
+    \[ X \preceq Y \; \Leftrightarrow \; \forall(x\in X,y\in Y)(x<y) \; \vee \; X = Y \]
+    gdzie $X$ i $Y$ - przedziały.
+
+    Relacja $\preceq$ jest relacją częściowego porządku, ponieważ:
+    \begin{enumerate}
+        \item jest zwrotna ($X = Y \Rightarrow X \preceq Y$)
+        \item jest antysymetryczna
+        \[
+        X \neq Y \wedge X \preceq Y \Rightarrow \forall(x\in X,y\in Y)(x<y) \Rightarrow 
+        \]
+        \[
+        \Rightarrow \neg \exists(x \in X, y \in Y)(x > y) \Rightarrow Y \npreceq X
+        \]
+        \item jest przechodnia\
+        \[
+        X \preceq Y \wedge Y \preceq Z \Rightarrow 
+        \]\[
+        \Rightarrow (\forall(x\in X,y\in Y)(x<y) \; \vee \; X = Y) \wedge 
+        (\forall(y\in Y,z\in Z)(y<z) \; \vee \; Y = Z) \Rightarrow
+        \]\[
+        \Rightarrow (\forall(x\in X, z \in Z)(x<z) \vee X = Z) \Rightarrow 
+        \]\[
+        \Rightarrow X \preceq Z
+        \]
+    \end{enumerate}
+    Zatem $P := (I, \preceq)$ jest posetem. Z lematu udowodnionego na wykładzie wiemy, że: 
+
+    \[height(P) \cdot width(P) \geq |I| = n\]
+
+    Zatem:
+
+    \[
+    height(P) \geq \sqrt{n} \;\vee \;width(P) \geq \sqrt{n}
+    \]
+
+    Przy czym $height(P)$ to długość najdłuższego łańcucha, w tym przypadku liczność największego podzbioru $I$ takiego, 
+    że przedziały do niego należące są parami rozłączne, a $width(P)$ to długość najdłuższego antyłańcucha, 
+    tutaj będzie to liczność największego takiego podzbioru $I$, że każde dwa przedziały do niego należące mają wspólny punkt, 
+    czyli przecięcie po wszyskich przedziałach należących do tego podzbioru nie jest zbiorem pustym.
 
 \end{mdframed}
 \begin{mdframed}
@@ -1501,13 +1596,18 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $\mathcal{F}$ będzie maksymalną przecinającą się rodziną podzbiorów $[n]$.
     Wykaż, że:
     \[ |\mathcal{F}| = 2^{n-1} \]
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Weźmy $A \subset [n]$. Zauważmy, że $A \cap ([n] - A) = \emptyset$. 
+    Zatem tylko jeden z tych zbiorów może należeć do $\mathcal{F}$, czyli $|\mathcal{F}| \leq 2^{n-1}$.
 
+    Zauważmy, że rodzina zbiorów $\{A \subset [n] : n \in A\}$ spełnia warunek zadania, zatem $|\mathcal{F}| \geq 2^{n-1}$. 
+    Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
 
@@ -1515,12 +1615,17 @@ linewidth=1pt}
 
 
 
-\begin{zad}(kolos)
+\begin{zad}[Katarzyna Szwed, Autor 2]
     Niech $\mathcal{F}$ będzie maksymalną rodziną podzbiorów zbioru $[n]$ taką,
     że dla dowolnych $A, B \in \mathcal{F}$ mamy $A \cup B \neq [n]$. Wyznacz $|\mathcal{F}|$.
 \end{zad}
 \begin{mdframed}
+    % Rozwiązanie: Katarzyna Szwed
+    Weźmy $A \subset [n]$. Zauważmy, że istnieje dokładnie jeden zbiór $B$ taki, że $B \subset [n] \wedge A \cap B = [n]$. 
+    Zatem tylko jeden z tych zbiorów może należeć do $\mathcal{F}$, czyli $|\mathcal{F}| \leq 2^{n-1}$.
 
+    Zauważmy, że rodzina wszystkich podzbiorów $[n-1]$ spełnia warunek z zadania, zatem $|\mathcal{F}| \geq 2^{n-1}$. 
+    Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
 
@@ -1609,7 +1714,7 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
 \newpage
 \section{Zestaw}          % Zestaw 8
 
-\begin{zad}[Krzysztof Wójtowicz, Autor 2]
+\begin{zad}[Krzysztof Wójtowicz, Karol Sęk]
     Wykorzystaj funkcje tworzące aby policzyć na ile sposobów można wyciągnąć 70 kul z urny zawierającej 30 kul czerwonych, 40 kul niebieskich i 50 kul białych. Kule tego samego koloru są nierozróżnialne. Kolejność wyciągania jest nieistotna.
 \end{zad}
 \begin{mdframed}
@@ -1638,7 +1743,39 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
 
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Niech ciąg $r_n$ wyznacza ilość wyborów $n$ czerwonych kul\\
+    Funkcja tworząca dla $r_n$ ma postać \\
+    $$R(x) = 1 + x + x^2 + ... + x^{30} = \frac{1-x^{31}}{1-x}$$\\
+
+    Niech ciąg $b_n$ wyznacza ilośc wyborów $n$ niebieskich kul\\
+    Funkcja tworząca dla $b_n$ ma postać \\
+    $$B(X) = 1 + x + x^2 + ... + x^{40} = \frac{1-x^{41}}{1-x}$$\\
+
+    Niech ciąg $w_n$ wyznacza ilośc wyborów $n$ niebieskich kul\\
+    Funkcja tworząca dla $w_n$ ma postać \\
+    $$W(X) = 1 + x + x^2 + ... + x^{50} = \frac{1-x^{51}}{1-x}$$\\
+
+    Niech ciąg $o_n = r_n \star b_b \star w_n$ jest splotem tych ciągów, wyznacza on ilość wyborów $n$ kul o dowolnym kolorze\\
+    Funkcja tworząca dla $o_n$ ma postać\\
+    $$O(X) = R(X)*B(X)*W(X) = \frac{(1-x^{31})(1-x^{41})(1-x^{51})}{(1-x)^3} =$$
+    $$(1-x^{31})(1-x^{41})(1-x^{51}) * \sum_{i=0}^{\infty}\binom{n+2}{2}x^n$$
+
+    Zauważmy, że liczbę 70 można przedstawić poprzez następujące podziały:\\
+
+    $$70 = 0 + 0 + 0 + 70$$
+    $$70 = 0 + 0 + 51 + 19$$
+    $$70 = 0 + 41 + 0 + 29$$
+    $$70 = 31 + 0 + 0 + 39$$
+
+    Opowiadają tym podziałom następujące współczynniki\\
+
+    $$1*1*1*\binom{72}{2}$$
+    $$1*1*(-1)*\binom{21}{2}$$
+    $$1*(-1)*1*\binom{31}{2}$$
+    $$(-1)*1*1*\binom{41}{2}$$
+
+    Po zsumowaniu otrzymujemy wynik $1061$\\
+
 \end{mdframed}
 
 \begin{zad}[Krzysztof Wójtowicz, Autor 2]
@@ -1771,7 +1908,7 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
 
 
 
-\begin{zad}[Maciej Wełpa, Autor 2]
+\begin{zad}[Maciej Wełpa, Karol Sęk]
     Niech $a_n$ będzie liczbą trójek $(i,j,k)$ liczb całkowitych takich, że $i \geqslant 0, j \geqslant 1, k \geqslant 1$ oraz $i + 3j + 3k = n$. Znajdź funkcję tworzącą ciągu $(a_0,a_1,\dots)$ i wyznacz wzór na $a_n$.
 \end{zad}
 \begin{mdframed}
@@ -1797,7 +1934,32 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     Po wyznaczeniu tych stałych, każdy z ułamków prostych powinno przekształcić się z powrotem do szeregu potęgowego.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Rozważmy ciagi $b_n,c_n$ i $d_n$ takie, że\\
+    $$b_n = |\{i \in \mathbb{N} \cup \{0\}  | i = n\}|$$
+    $$c_n = |\{j \in \mathbb{N} | 3j = n\}$$
+    $$d_n = |\{k \in \mathbb{N} | 3k = n\}$$
+
+    Ciągowi $b_n$ odpowiada funkcja tworząca\\
+    $$ B(x) = 1 + x +x^2 + ... = \frac{1}{1-x}$$
+
+    Ciągowi $c_n$ oraz $d_n$ odpowiada funkcja tworząca\\
+    $$ C(x) = D(x) = x^3 + x^6 + x^9 + ... = \frac{x^3}{1-x^3}$$
+
+    Poszukujemy następującego ciągu
+    $$o_n = \sum_{i+3j+3k=n}1 = \sum_{i+j+k=n}1*c_j*d_k$$
+
+    Zauważmy, że ciąg $b_n$ jest równy ciągowi stałemu o wartości $1$\\
+    Stąd:
+    $$ \sum_{i+j+k=n}b_i*c_j*d_k$$
+
+    Okazuje się, że jest to wprost z definicji splot ciągów $b_n \star c_n \star d_n$\\
+
+    Funkcja tworząca $o_n$ jest iloczynem funkcji tworzących ciągów w splocie\\
+
+    $$O(x) = B(x)*C(x)*D(x) = \frac{x^6}{(1-x)(1-x^3)^2}$$
+
+    Wyznaczenie ciągu $o_n$ jest już trywialne.
+
 \end{mdframed}
 
 \begin{zad}[Krzysztof Wójtowicz, Autor 2]
@@ -2515,7 +2677,33 @@ Ponoć Profesor coś zakręcił i nie ma tego zestawu.
     \[\sum_{k=0}^{n}F_k\cdot F_{n-k}\]
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Karol Wójcik
+    Funkcja generująca liczb Fibonacciego to:
+\[
+F(z) = \frac{1}{\sqrt{5}} \left( \frac{1}{1 - \phi z} - \frac{1}{1 - \hat{\phi} z} \right),
+\]
+gdzie \( \phi = \frac{1 + \sqrt{5}}{2} \), \( \hat{\phi} = \frac{1 - \sqrt{5}}{2} \).
+
+Ponieważ splot odpowiada mnożeniu funkcji generujących, interesuje nas współczynnik przy \( z^n \) w \( F(z)^2 \):
+\[
+F(z)^2 = \left( \frac{1}{\sqrt{5}} \left( \frac{1}{1 - \phi z} - \frac{1}{1 - \hat{\phi} z} \right) \right)^2 = \frac{1}{5} \left( \frac{1}{(1 - \phi z)^2} + \frac{1}{(1 - \hat{\phi} z)^2} - \frac{2}{(1 - \phi z)(1 - \hat{\phi} z)} \right)
+\]
+
+Z rozwinięć:
+\[
+\frac{1}{(1 - az)^2} = \sum_{n=0}^\infty (n + 1) a^n z^n, \quad \frac{1}{(1 - \phi z)(1 - \hat{\phi} z)} = \sum_{n=0}^\infty F_{n+1} z^n
+\]
+
+otrzymujemy:
+\[
+F(z)^2 = \sum_{n=0}^\infty \left( \frac{1}{5} \left[ (n+1)(\phi^n + \hat{\phi}^n) - 2F_{n+1} \right] \right) z^n
+\]
+
+Zatem współczynnik przy \( z^n \) to:
+\[
+\sum_{k=0}^{n} F_k F_{n-k} = \frac{2n F_{n+1} - (n+1) F_n}{5}
+\]
+
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -2784,11 +2972,28 @@ Sytuacja taka sama jak w 7 zestawie.
 \end{mdframed}
 
 
-\begin{zad}
+\begin{zad}[Karol Wójcik, Autor 2]
     Udowodnij, że dowolne drzewo $T$ ma przynajmniej $\Delta(T)$ liści.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+    % Rozwiązanie: Karol Wójcik
+    Niech $l$ - liczba liści w drzewie t
+    \newline\newline
+    Niech T będzie drzewem o $n$ wierzchołkach, wtedy liczba krawędzi to $n-1$
+    \newline\newline
+    Z HSL:
+    \[
+    \sum deg(v) = 2(n-l-1) + l + \Delta(T)
+    \]
+    \[
+    2(n-1) \geqslant l + 2(n-l-1) + \Delta(T)
+    \]
+    \[
+    2n-2 \geqslant l + 2n - 2 -2l + \Delta(T)
+    \]
+    \[
+    l \geqslant \Delta(T)
+    \]
 \end{mdframed}
 \begin{mdframed}
     Rozwiązanie Autora 2.
@@ -2834,14 +3039,51 @@ Sytuacja taka sama jak w 7 zestawie.
 \end{mdframed}
 
 
-\begin{zad}
+\begin{zad}[Autor 1, Karol Sęk]
     Pokaż, że $rad(G) \leq diam(G) \leq 2 rad(G)$ dla dowolnego grafu $G$. Wskaż grafy świadczące równości.
 \end{zad}
 \begin{mdframed}
     Rozwiązanie Autora 1.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    Załóżmy, że graf jest spójny, bez tego założenia pojęcie promienia grafu nie ma sensu.
+
+    Wprost z definicji promienia i średnicy grafu $rad(G) \leq diam(G)$\\
+
+    Równość spełniona dla następującego grafu:\\
+    $$V(G) = \{1,2\}$$
+    $$E(G) =\{\{1,2\}\}$$
+    $$rad(G) = 1$$
+    $$diam(G)= 1$$
+
+
+    Niech $x,y \in V(G)$ $x \neq y$ takie, że $dist(x,y) = diam(G)$  (1)
+
+    Niech $z \in V(G)$ $z\neq y$ $z\neq x$ takie, że $ \forall_{w \in V(G)}dist(w,z) \leq rad(G)$ (2) \\
+
+    Na podstawie spójności grafu, istnieją ścieżki od x do z i od z do y, spelniają one nierównośc:
+    $$dist(x,y) \leq dist(x,z) + dist(z,y)$$
+
+    z (2) 
+    $$dist(x,z) + dist(z,y)  \leq rad(G) + rad(G) = 2rad(G)$$
+
+    z (1)
+    $$dist(x,y) = diam(G)$$
+
+    Łącząc te obserwacje:
+
+    $$diam(G) = dist(x,y) \leq dist(x,z) + dist(z,y)  \leq 2rad(G)$$
+
+    $$diam(G) \leq 2rad(G)$$
+
+    Równość spełniona dla następującego grafu:\\
+
+    $$V(G) = \{1,2,3\}$$
+    $$E(G) =\{\{1,2\},\{2,3\}\}$$
+    $$rad(G) = 1$$ 
+    $$diam(G)= 2$$
+
+
 \end{mdframed}
 
 
@@ -2850,10 +3092,46 @@ Sytuacja taka sama jak w 7 zestawie.
     Wykaż, że dla każdego grafu $G$ zachodzi: $G$ jest spójny lub $\bar{G}$ (dopełnienie $G$) jest spójny.
 \end{zad}
 \begin{mdframed}
-    Rozwiązanie Autora 1.
+     % Rozwiązanie: Bartosz Wójcik
+
+     (1) Załóżmy, że graf $G$ jest niespójny. Wtedy $G$ można podzielić na 
+     składowe, $G_1$ i $G_2$ takie, że dla każdego $v \in G_1$ i $u \in G_2$ 
+     nie istnieje ścieżka od $u$ do $v$. Udowodnimy, że graf $\overline{G}$ jest 
+     spójny. Weźmy dowolne dwa $u, v \in G$. 
+     
+         Jeśli $u \in G_1$, a $v \in G_2$ to 
+     z założenia nie istnieje krawędź $uv$ w $G$, więc istnieje krawędź (ścieżka) w 
+     $\overline{G}$. 
+     
+         W przypadku gdy $u, v \in G_1$ weźmy $w \in G_2$. Według poprzedniego 
+     argumentu istnieje krawędź $uw$ i $wv$ w $\overline{G}$, a więc ścieżka $uwv$. 
+     
+         Pozostałe przypadki wynikają z symetrii oznaczeń. Udowdniliśmy, że dla każdego 
+     $u, v \in \overline{G}$ istniej ścieżka łączaca $u$ i $v$, więc graf $\overline{G}$ 
+     jest spójny.
+ 
+     (2) Jeśli $G$ jest spójny to teza spełniona.
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    % Rozwiązanie: Karol Wójcik
+    Załóżmy, że $G$ jest niespójny.
+    Oznacza to, że:
+    $G = G_1 + G_2$
+    \newline
+    Udowodnię, że $\overline{G}$ jest spójny \\
+
+    Weźmy x,y $\in V(\overline{G}) $\\
+    Mamy dwa przypadki:
+    \newline
+    1. $x \in V(G_1)  y \in V(G_2)$
+    \newline
+    Wtedy xy jest krawędzią w $\overline{G}$
+    \newline\newline
+    2. $x$,$y$ $\in V(G_1) ($analogicznie gdy $ x,y \in V(G_2))$
+    Zauważmy, że \( \exists z \in V(G_2) \).\\
+Stąd \( xzy \) jest ścieżką w \( \overline{G} \).
+\newline\newline
+Z powyższych przypadków wynika, że $\overline{G}$ jest spójny
 \end{mdframed}
 
 
@@ -2880,8 +3158,24 @@ Sytuacja taka sama jak w 7 zestawie.
 
 
 
-% \section{Zestaw}          % Zestaw 12
-% Nothing here. Tylko work in progress...
+\section{Zestaw}          % Zestaw 12
+\begin{zad} [Bartosz Wójcik]
+    Niech $G = (V, E, w)$ będzie ważonym grafem o funkcji wag $w: E \rightarrow \R^+$.
+    Wykaż, że jeśli $w(e_1) \neq w(e_2)$ dla każdych dwóch krawędzi $e_1$ oraz $e_2$, to 
+    minimalne drzewo rozpinające w $G$ jest wyznaczone jednoznacznie.
+\end{zad}
+\begin{mdframed}
+    % Rozwiązanie: Bartosz Wójcik, zadanie 6
+    Załóżmy, że teza nie jest spełniona i istnieją dwa minimalne drzewa rozpinające $T_1$ i 
+    $T_2$. Jeśli drzewa $T_1$ i $T_2$ są różne to grafy te różnią się krawędziami. Weźmy krawędź 
+    $e_1$, która leży tylko w jednym z grafów (załóżmy, że w $T_1$). Dodajmy $e_1$ do $T_2$. W $T_2 + e_1$ 
+     istnieje teraz cykl (bo $T_2$ to drzewo), w którym jest krawędź $e_2$, która nie należy do $T_1$. Po usunięciu 
+     $e_2$ z $T_2 + e_1$ $T_2$ ma mniejszą sumę wag (bo $w(e_1) < w(e_2)$) oraz jest drzewem rozpinającym. Jest to sprzeczne 
+     z załóżeniami, że $T_2$ było minimalnym drzewm rozpinającym.
+\end{mdframed}
+\begin{mdframed}
+    Rozwiązanie Autora 2.
+\end{mdframed}
 % \section{Zestaw}          % Zestaw 13
 % Nothing here. Tylko work in progress...
 
