@@ -563,7 +563,7 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}[Karol Sęk, Autor 2]
+\begin{zad}[Karol Sęk, Wiktor Szymonek]
     Posługując się interpretacją kombinatoryczną udowodnij, że:
     \[ \sum_{i=0}^{k} \binom{n}{i} \binom{n-i}{k-i} = 2^k \binom{n}{k} \]
 \end{zad}
@@ -586,10 +586,26 @@ linewidth=1pt}
     Ostatecznie $|L_i| =  \binom{n}{i} \binom{n-i}{k-i}$.\\
     $|\bigcup_{\small i \in [k]} \space L_i | = \sum_{i=0}^{k}\binom{n}{i} \binom{n-i}{k-i}$\\
     $\bigcup_{\small i \in [k]} \space L_i = P \implies \sum_{i=0}^{k}\binom{n}{i} \binom{n-i}{k-i} = 2^k\binom{n}{k}$\\
-
 \end{mdframed}
 \begin{mdframed}
-    Rozwiązanie Autora 2.
+    % Rozwiązanie: Wiktor Szymonek
+    Niech: \(A = \left[n\right]\) oraz \(B = \left\{(x,y) : x\subseteq A \land |x| = k \land y\subseteq x  \right\} \) 
+    \bigskip Ustalmy ile wynosi \(|B|\):
+    \begin{enumerate}
+        \item Z jednej strony:
+        Ilość możliwych \(x\), czyli \(k\)-elementowych podzbiorów \(\left[n\right]\) wynosi \(\binom{n}{k}\).
+        Z każdego takiego \(x\) chcemy wybrać \(y\) będący jego dowolnym podzbiorem. Jest ich \(2^k\)
+        Zatem par uporządkowanych \((x,y)\) jest:
+        \[|B| = 2^k \binom{n}{k}\]
+        \item Z drugiej strony: 
+        Weźmy \(i \in \left\{0,1,\dots,k \right\} \). Wiemy, że zawsze będzie istnieć \(i\)-elementowe przecięcie \(x \cap y = y\), zatem możemy najpierw wybrać przecięcie a następnie dobrać kolejne elementy do \(x\).
+        Wybierzmy pewne \(i\) elementów z \(\left[n\right]\) i umieśćmy je zarówno w \(x\) jak i w \(y\) na \(\binom{n}{i}\) sposobów. Następnie dobierzmy pozostałe \(k-i\) elementy, które powinny się znaleźć w \(x\)
+        na \(\binom{n-i}{k-i}\) sposobów. Mamy takich par:
+        \[\binom{n}{i} \binom{n-i}{k-i}\]
+        Aby zliczyć wszystkie możliwe pary, musimy uwzględnić wszystkie możliwe \(i\), stąd otrzymujemy:
+        \[|B| = \sum_{i=0}^{k} \binom{n}{i} \binom{n-i}{k-i}\]
+        \qed
+    \end{enumerate}
 \end{mdframed}
 
 
@@ -1204,7 +1220,7 @@ linewidth=1pt}
 
 
 
-\begin{zad}[Julian Sowiński, Autor 2]
+\begin{zad}[Julian Sowiński, Wiktor Szymonek]
     Wykaż, że dla dowolnego $x \in \mathbb{R}$ zachodzi:
     \begin{enumerate}
         \item $x^n = \sum_{k}S(n,k) x^{\underline{k}}$
@@ -1297,8 +1313,76 @@ linewidth=1pt}
 \end{mdframed}
 \begin{mdframed}
     \begin{enumerate}
-        \item Rozwiązanie Autora 2 podpunktu 1
-        \item Rozwiązanie Autora 2 podpunktu 2
+        \item
+        %Rozwiązanie: Wiktor Szymonek
+        Intepretacja kombinatoryczna (historyjka + zarys rozwiązania formalnego): \newline
+        Najpierw udowodnimy następującą tożsamość dla \( x \in \mathbb{N} \):
+
+        \bigskip
+
+        Rozważmy problem rozmieszczenia $n$ osób w $x$ pokojach, przy czym każda osoba musi znaleźć się w jakimś pokoju. Dozwolone jest, aby w pokoju znajdowało się dowolnie wiele osób (w tym zero lub wszystkie).
+
+        \begin{itemize}
+            \item Z jednej strony, każda z $n$ osób ma do wyboru jeden z $ x$ pokoi. Stąd liczba wszystkich możliwych rozmieszczeń wynosi:
+            \[x^n\]
+
+            \item Z drugiej strony, możemy zliczyć możliwości inną procedurą. Najpierw dzielimy $n$ osób na $k$ grup (niepustych oraz rozłącznych), gdzie \( k = 1, 2, \dots, n \). Takich podziałów jest oczywiście: \( S(n,k) \).
+
+            Następnie każdą z tych $k$ grup umieszczamy w jednym z $x$ dostępnych pokoi. Możemy to zrobić na
+            \[x^{\underline{k}} = x(x-1)(x-2)\dots(x-k+1)\]
+            sposobów (kolejno wybieramy unikalny pokój dla każdej grupy).
+
+            Zatem dla ustalonego $k$, liczba możliwych rozmieszczeń to:
+            \[S(n,k) \cdot x^{\underline{k}}\]
+
+            Sumując po wszystkich możliwych wartościach $k$, otrzymujemy:
+            \[\sum_{k=1}^n S(n,k) \cdot x^{\underline{k}}\]
+        \end{itemize}
+
+        \bigskip
+
+        Porównując oba równoważne sposoby zliczania, stwierdzamy, że:
+        \[x^n = \sum_{k=1}^n S(n,k) \cdot x^{\underline{k}}\]
+        Zatem udowodniliśmy, że równość ta zachodzi dla wszystkich \( x \in \mathbb{N} \). Ponieważ obie strony są wielomianami stopnia \( n \), a równość zachodzi dla nieskończenie wielu wartości naturalnych, stąd zgodnie z zasadniczym twierdzeniem algebry równość ta jest prawdziwa dla wszystkich liczb rzeczywistych (a nawet zespolonych).
+        \qed
+        \bigskip \newline
+        \textbf{(Bardziej formalnie można zrobić to zadanie rozważając zbiór wszystkich funkcji \(f:\left[ n \right] \longmapsto_{} \left[ x \right] \). Zliczenie z lewej strony trywialne a z drugiej zauważamy, że możemy podzielić dziedzinę na niepuste, rozłączne podzbiory argumentów o tych samych wartościach \(f\))}
+        \bigskip \bigskip
+        \item 
+        Tak jak w podpunkcie 1. udowodnię najpierw że dla \( x \in \mathbb{N} \)
+        \[x^{\bar{n}} = \sum_{k} \left[n \atop k \right] x^k\]
+        Niech \( x \in \mathbb{N} \)
+        Rozważmy problem rozmieszczenia $n$ gości przy $k$ okrągłych stołach ponumerowanych liczbami ze zbioru \(\{1,2,\dots,x\}\), wg następujących zasad:
+        \begin{itemize}
+            \item różne stoły mogą mieć ten sam numer,
+            \item przy stołach liczy się wzajemne położenie gości ale nie rozróżniamy rotacji
+        \end{itemize}
+        \bigskip
+        Mając na uwadze te założenia spróbujmy zliczyć możliwości:
+        \begin{itemize}
+            \item Z jednej strony rozważmy następującą procedurę:
+            \newline
+            Zakładając, że mamy wcześniej ustalony porządek sadzania gości, weźmy pierwszego,
+             usadźmy go przy stole i wybierzmy numer stołu. Możemy to zrobić na $x$ sposobów.
+            Biorąc drugiego gościa mamy wybór - możemy usadzić go przy nowym stole wybierając
+             numer lub posadzić go po prawej stronie pierwszego gościa - możemy to zrobić na
+              $x+1$ sposobów. Kolejnego gościa - analogicznie
+            - możemy usadzić przy nowym stole i wybrać mu numer lub posadzić go po prawej stronie
+             pierwszego lub po prawej stronie drugiego - mamy $x+2$ opcji. Proces powtarzamy do wyczerpania ludzi.
+              Zauważając, że w $i$-tym kroku mamy $x+i-1$ możliwości możemy 
+              łatwo zliczyć wszystkie kombinacje, których jest:
+            \[{\displaystyle \prod_{i=1}^{n} (x+i-1)} = x(x+1)(x+2)\dots(x+n-1) = x^{\bar{n}}\]
+            \item Licząc z drugiej strony:
+            Rozważmy ustawienie gości dla $k$ stołów. Ustawienia ludzi przy stole można rozróżnić ustalając kto znajduje się po prawej stronie danego gościa, zatem możemy każdemu ustawieniu przyporządkować pewien cykl.
+            Zatem aby zliczyć ilość ustawień gości dla danej ilości stołów wystarczy wyznaczyć ilość wszystkich permutacji gości, którzy podzieleni są na k cykli, czyli  \(\left[n \atop k \right]\). Dla każdego stołu musimy dodatkowo wybrać numer, stąd ostateczny wynik to:
+            \[\left[n \atop k \right] x^k\]
+            Ponieważ stołów może być \(k = 1,2,\dots, n\) jeśli zsumujemy wszystkie takie przypadki otrzymamy finalny wynik:
+            \[\sum_{k=1}^{n} \left[n \atop k \right] x^k\]
+        \end{itemize}
+        \bigskip
+        Udowodniliśmy równość dla \( x \in \mathbb{N} \), jednak jak w 1. zachodzi ona również dla \( x \in \mathbb{R} \)
+        \qed \bigskip
+        \newline \textbf{(Sposób bardziej formalny polegałby na zamianie problemu gości i stolików na problem permutacji \(\left[ n \right] \) podzielonych na ponumerowane cykle (liczbami ze zbioru \(\left[ x \right] \)) - sposób analogiczny i raczej wymagający mniej pisania.)}
     \end{enumerate}
 \end{mdframed}
 
@@ -1596,7 +1680,7 @@ linewidth=1pt}
 \end{mdframed}
 
 
-\begin{zad}[Katarzyna Szwed, Autor 2]
+\begin{zad}[Katarzyna Szwed, Wiktor Szymonek]
     Niech $\mathcal{F}$ będzie maksymalną przecinającą się rodziną podzbiorów $[n]$.
     Wykaż, że:
     \[ |\mathcal{F}| = 2^{n-1} \]
@@ -1610,12 +1694,24 @@ linewidth=1pt}
     Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
-
+    % Rozwiązanie: Wiktor Szymonek
+    Rozważmy następujący zbiór:
+    \[M = \left\{A\in M : 1 \in A\right\}\]
+    Wówczas dla dowolnego $A,B \in M$ zachodzi $1 \in A \cap B \implies A\cap B \ne \emptyset$ zatem $M$ jest przecinającą się rodziną.
+    \newline Udowodnię, że $M$ jest maksymalną taką rodziną. Załóżmy, że zbiór $X \subseteq P([n])$ 
+    jest w relacji "$\subseteq$" ostro większy od $M$ i jest zbiorem o szukanych własnościach.
+    \newline Zatem $M \neq X$ $\land$ $M \subset X \implies \exists_{x \in X}$  $ 1 \notin x$. Zauważmy, że 
+    \( \left\{1\right\} \in M \implies \left\{1\right\} \in X\) oraz $\left\{1\right\} \cap x = \emptyset$ 
+    co daje sprzeczność. Stąd $M$ jest maksymalnym takim zbiorem.
+    \newline Moc zbioru wszystkich podzbiorów $[n]$ zawierających 1 to $2^{n-1}$ stąd:
+    \[|\mathcal{F}| = |M| = 2^{n-1}\]
+    \qed
 \end{mdframed}
 
 
 
-\begin{zad}[Katarzyna Szwed, Autor 2]
+
+\begin{zad}[Katarzyna Szwed, Wiktor Szymonek]
     Niech $\mathcal{F}$ będzie maksymalną rodziną podzbiorów zbioru $[n]$ taką,
     że dla dowolnych $A, B \in \mathcal{F}$ mamy $A \cup B \neq [n]$. Wyznacz $|\mathcal{F}|$.
 \end{zad}
@@ -1628,7 +1724,19 @@ linewidth=1pt}
     Oznacza to, że $|\mathcal{F}| = 2^{n-1}$.
 \end{mdframed}
 \begin{mdframed}
-
+    % Rozwiązanie: Wiktor Szymonek
+    Dowód analogiczny jak 6.3: \bigskip
+    \newline Rozważmy następujący zbiór:
+    \[M = \left\{A\in M : 1 \notin A\right\}\]
+    Wówczas dla dowolnego $A,B \in M$ zachodzi $1 \notin A \cup B \implies A\cup B \ne [n]$
+    \newline Udowodnię, że $M$ jest zbiorem maksymalnym o takich własnościach. Załóżmy, że zbiór $X \subseteq P([n])$ 
+    jest w relacji "$\subseteq$" ostro większy od $M$ i jest zbiorem o szukanych własnościach.
+    \newline Zatem $M \neq X$ $\land$ $M \subset X \implies \exists_{x \in X}$  $ 1 \in x$, ponadto ponieważ
+    $M$ zawiera w sobie wszystkie podzbiory $[n]$ nie zawierające jedynki to wiemy że $[n]-x \in M \implies [n]-x \in X$ 
+    oraz $[n]\cup([n]-x) = [n]$ co daje sprzeczność. Stąd $M$ jest maksymalnym takim zbiorem.
+    \qed
+    \newline Moc zbioru wszystkich podzbiorów $[n]$ nie zawierających 1 to $2^{n-1}$ stąd:
+    \[|\mathcal{F}| = |M| = 2^{n-1}\]
 \end{mdframed}
 
 
@@ -3088,7 +3196,7 @@ Sytuacja taka sama jak w 7 zestawie.
 
 
 
-\begin{zad}
+\begin{zad} (Wiktor Szymonek)
     Wykaż, że dla każdego grafu $G$ zachodzi: $G$ jest spójny lub $\bar{G}$ (dopełnienie $G$) jest spójny.
 \end{zad}
 \begin{mdframed}
@@ -3132,6 +3240,14 @@ Sytuacja taka sama jak w 7 zestawie.
 Stąd \( xzy \) jest ścieżką w \( \overline{G} \).
 \newline\newline
 Z powyższych przypadków wynika, że $\overline{G}$ jest spójny
+\end{mdframed}
+\begin{mdframed}
+    % Rozwiązanie: Wiktor Szymonek
+    Jeśli $G$ jest spójny, teza zachodzi. Załóżmy zatem, że $G$ jest niespójny. Wówczas możemy wyróżnić w $G$ pewną ilość (większą niż 1) komponentów spójnych.
+    Niech \(K = \left\{G_{1},G_{2},\dots\right\}\) będzie zbiorem komponentów spójnych z $G$. Weźmy dowolne \(A,B \in K\) różne od siebie. Wówczas dla dowolnych \(x \in A\) , \(u \in B\) zachodzi 
+    \(xu \notin E(G) \implies xu \in E(\bar{G})\). Rozważmy teraz dowolne dwa wierzchołki w tym samym komponencie spójnym, B.S.O niech \(x,y \in A\) oraz \(u \in B\), wówczas \(xu,uy \notin E(G) \implies xu,uy \in E(\bar{G})\) zatem w $\bar{G}$ istnieje ścieżka $xuy$.
+    Stąd $\bar{G}$ jest spójny
+    \qed
 \end{mdframed}
 
 
